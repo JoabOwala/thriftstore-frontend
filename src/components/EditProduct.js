@@ -49,7 +49,7 @@ function EditProduct({ productId }) {
             className="card shadow px-3 py-5"
             style={{ width: "600px", backgroundColor: "#E8F9FD" }}
           >
-            <h2 className="card-title text-center">Update Product</h2>
+            <h2 className="card-title text-center">Edit Product</h2>
             <form onSubmit={handleSubmit}>
               <label htmlFor="id">ID:</label>
               <input
