@@ -5,9 +5,12 @@ import { useState, useEffect } from 'react';
 function EditProduct({ productId }) {
 
   const [product, setProduct] = useState({
+    
     name: '',
     description: '',
-    price: ''
+    image: '',
+    price: '',
+    quantity: ''
   });
 
   useEffect(() => {
