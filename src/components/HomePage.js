@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+ 
+
 
 const HomeSection = styled.section`
   width: 100%;
@@ -30,7 +32,7 @@ const ImageContainer = styled.div`
   flex: 1 1 300px;
 `;
 
-const Image = styled.img`
+const StyledImage = styled.img`
   margin-top: 30px;
   width: 100%;
 `;
@@ -111,7 +113,7 @@ function HomePage() {
           </div>
         </Content>
         <ImageContainer>
-          <Image src="./images/background.png" alt="" />
+          <StyledImage src="../images/background.png" alt="" />
         </ImageContainer>
       </HomeSection>
     </div>
