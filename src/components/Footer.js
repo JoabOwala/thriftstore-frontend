@@ -117,7 +117,7 @@ const FooterSection = styled.footer`
 const Footer = () => {
   return (
     <div>
-      <FooterSection>
+      <footer id="footer">
         <div className="footer-top">
           <div className="container">
             <div className="row">
@@ -177,7 +177,7 @@ const Footer = () => {
             Designed by <a href="#">SA coding</a>
           </div>
         </div>
-      </FooterSection>
+    </footer>
     </div>
   );
 };
