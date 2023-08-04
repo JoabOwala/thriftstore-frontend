@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ buyer, setBuyer}) {
+    function handleLogoutClick(){
+        fetch("/logout", { method: "DELETE" }).then((r) => {
+            if (r.ok) {
+                setBuyer(null);
+            }
+        });
+    }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <b>Thrift shop</b>
+          <b>ThriftShop</b>
         </Link>
 
         <button
@@ -20,18 +27,45 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto me-5">
-            <li className="nav-item">
-              <Link to="/homepage" className="nav-link">
-                Homepage
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/productslist" className="nav-link">
-                Productlist
-              </Link>
-            </li>
+        <div>
+            {buyer ? (
+                <>
+                    <ul className="navbar-nav ms-auto me-5">
+                        <Link to="/homepage" className="nav-link">
+                        Homepage
+                        </Link>
+                        <Link to="/productslist" className="nav-link">
+                        Productlist
+                        </Link>
+                        <Link onClick={handleLogoutClick} to="/">
+                        Logout
+                        </Link>
+                    </ul>
+                </>
+            ) : (
+                <> 
+                <ul className="navbar-nav ms-auto me-5">
+                        
+                    <Link to="/aboutus" className="nav-link nav-item">
+                    AboutUs
+                    </Link>
+                    
+                    <Link to="/signup" className="nav-link">
+                    Sign up
+                    </Link>
+              
+                    <Link to="/login" className="nav-link">
+                    Login
+                    </Link>
+                </ul>
+            
+                </>
+            )
+            }
+        </div>
+
+        {/* <div className="collapse navbar-collapse" id="navbarNav">
+          
             <li className="nav-item">
               <Link to="/editproduct" className="nav-link">
                 Edit product
@@ -47,19 +81,7 @@ function Navbar() {
                 Cart
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                Sign up
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/aboutus" className="nav-link">
-                About us
-              </Link>
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </li>
+        
             <li className="nav-item">
               <Link to="/admin" className="nav-link">
                 Admin
@@ -73,8 +95,8 @@ function Navbar() {
                 Sign out
               </button>
             </li> */}
-          </ul>
-        </div>
+          {/* </ul>
+        </div> */}
       </div>
     </nav>
   );

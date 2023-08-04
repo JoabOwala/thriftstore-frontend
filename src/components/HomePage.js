@@ -99,7 +99,7 @@ function HomePage() {
       <HomeSection>
         <Content>
           <H1>
-            <span>Electronic Products</span>
+            <span>Products</span>
             <br />
             Up To <span id="span2">50%</span> Off
           </H1>
