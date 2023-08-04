@@ -87,11 +87,4 @@ function LandingPg() {
     </div>
   );
 }
-
-<<<<<<< HEAD
 export default LandingPg;
-=======
-
-export default LandingPg;
-
->>>>>>> benayah
