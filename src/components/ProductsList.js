@@ -4,7 +4,7 @@ function ProductsList(){
     return (
         <div>
            
-        welcome to the products list page
+        welcome to the ProductsList page
         </div>
     )
 }
