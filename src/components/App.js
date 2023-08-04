@@ -10,6 +10,8 @@ import Cart from './Cart';
 import Admin from './Admin';
 import NavBar from './NavBar';
 import AboutUs from './AboutUs';
+import Login from './Login'
+import Footer from './Footer'
 // import Delete from './components/Admin/Delete';
 
 
@@ -30,6 +32,7 @@ function App() {
         <Route path="/Cart"element={<Cart />} />
         <Route path="/SignUp"element={<SignUp />} />
         <Route path="/Admin"element={<Admin />} />
+        <Route path="/login"element={<Login />} />
         
         
       {/* <Route  path="/delete" element={<Delete/>} /> */}
@@ -39,6 +42,7 @@ function App() {
         
       
     </Routes>
+    <Footer />
     
   </BrowserRouter>
   );
