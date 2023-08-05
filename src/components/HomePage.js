@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
  
 
@@ -91,9 +91,91 @@ const Button = styled.button`
     color: black;
     border: none;
   }
+  
+`;
+const ProductCardsContainer = styled.div`
+  margin-top: 100px;
+`;
+
+const ProductCard = styled.div`
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const ProductCardImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+`;
+
+const ProductCardBody = styled.div`
+  margin-top: 10px;
+`;
+
+const ProductCardHeading = styled.h3`
+  font-size: 20px;
+  color: black;
+  text-align: center;
+`;
+
+const ProductCardText = styled.p`
+  font-size: 12px;
+  margin-top: 5px;
+  color: black;
+  text-align: center;
+`;
+
+const ProductCardStars = styled.div`
+  margin-top: 10px;
+  text-align: center;
+
+  .checked {
+    color: #ffc800;
+  }
+`;
+
+const ProductCardPrice = styled.h2`
+  font-size: 20px;
+  color: black;
+  margin-top: 20px;
+
+  span {
+    float: right;
+    color: black;
+    cursor: pointer;
+  }
 `;
 
 function HomePage() {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Fetch products when the component mounts
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:3000/products");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
   return (
     <div>
       <HomeSection>
@@ -113,10 +195,36 @@ function HomePage() {
           </div>
         </Content>
         <ImageContainer>
-          <StyledImage src="../images/background.png" alt="" />
+          <StyledImage src="https://w7.pngwing.com/pngs/124/695/png-transparent-digital-electronic-products-product-physical-map-digital-electronic-products-phone-thumbnail.png" alt="" />
         </ImageContainer>
       </HomeSection>
-    </div>
+
+      <ProductCardsContainer className="container" id="product-cards">
+        <h1 className="text-center">PRODUCTS</h1>
+        <div className="row" style={{ marginTop: "30px" }}>
+          {products.map((product) => (
+            <div key={product.id} className="col-md-3 py-3 py-md-0">
+              <ProductCard className="card">
+                <ProductCardImage src={product.photo_url} alt="" />
+                <ProductCardBody className="card-body">
+                  <ProductCardHeading className="text-center">{product.title}</ProductCardHeading>
+                  <ProductCardText className="text-center">{product.description}</ProductCardText>
+                  <ProductCardStars className="star text-center">
+                    {/* Display star icons here */}
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <i key={index} className={`fa-solid fa-star ${index < product.rating ? "checked" : ""}`} />
+                    ))}
+                  </ProductCardStars>
+                  <ProductCardPrice>
+                    ${product.price} <span><i className="fa-solid fa-cart-shopping"></i></span>
+                  </ProductCardPrice>
+                </ProductCardBody>
+              </ProductCard>
+            </div>
+          ))}
+        </div>
+      </ProductCardsContainer>
+  </div>
   );
 }
 
