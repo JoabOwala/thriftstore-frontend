@@ -53,6 +53,14 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to="/aboutus" className="nav-link">
+                About us
+              </Link>
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to="/admin" className="nav-link">
                 Admin
               </Link>
@@ -73,4 +81,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
 

@@ -1,8 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
 import React from 'react';
-import LandingPg from './components/LandingPg';
-import Delete from './components/Admin/Delete';
+import LandingPg from './LandingPg';
+import HomePage from './HomePage';
+import AddProduct from './AddProduct';
+import ProductsList from './ProductsList';
+import EditProduct from './EditProduct';
+import SignUp from './SignUp';
+import Cart from './Cart';
+import Admin from './Admin';
+import NavBar from './NavBar';
+import AboutUs from './AboutUs';
+import Login from './Login'
+import Footer from './Footer'
+// import Delete from './components/Admin/Delete';
 
 
 
@@ -22,23 +32,68 @@ function App() {
         <Route path="/Cart"element={<Cart />} />
         <Route path="/SignUp"element={<SignUp />} />
         <Route path="/Admin"element={<Admin />} />
+        <Route path="/login"element={<Login />} />
         
         
       {/* <Route  path="/delete" element={<Delete/>} /> */}
-    
-
-    <Routes>
-      <Route path="/" element={<LandingPg />}>
-      <Route  path="/delete" element={<Delete/>} />
         
       
       
         
-      </Route>
+      
     </Routes>
+    <Footer />
     
   </BrowserRouter>
   );
 }
 
 export default App;
+// import React, { useEffect, useState } from "react";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import NavBar from "./NavBar";
+// import HomePage from "./HomePage";
+// import LandingPg from "./LandingPg"
+// import SignUp from "./SignUp"
+// import Login from "./Login"
+// // Import your other components like SignUp and Login here
+
+// // Assuming you have the SignUp and Login components imported as SignUpComponent and LoginComponent
+
+// function App() {
+//   const [buyer, setBuyer] = useState(null);
+
+//   useEffect(() => {
+//     // auto-login
+//     fetch("/me").then((r) => {
+//       if (r.ok) {
+//         r.json().then((buyer) => setBuyer(buyer));
+//       }
+//     });
+//   }, []);
+
+//   return (
+//     <BrowserRouter>
+//       <>
+//         <NavBar buyer={buyer} setBuyer={setBuyer} />
+//         <main>
+//           <Routes>
+//             {buyer ? (
+//               <Route path="/" element={<LandingPg />} />
+//             ) : (
+//               <>
+//                 <Route path="/signup" element={<SignUp />} />
+//                 <Route path="/login" element={<Login />} />
+//                 <Route path="/" element={<HomePage />} />
+//               </>
+//             )}
+//           </Routes>
+//         </main>
+//       </>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+
+
