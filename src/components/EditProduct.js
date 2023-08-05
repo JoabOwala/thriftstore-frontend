@@ -54,7 +54,7 @@ function EditProduct({ productId }) {
           >
             <h2 className="card-title text-center">Edit Product</h2>
             <form onSubmit={handleSubmit}>
-              <label htmlFor="id">ID:</label>
+              {/* <label htmlFor="id">ID:</label>
               <input
                 className="form-control"
                 type="text"
@@ -62,13 +62,13 @@ function EditProduct({ productId }) {
                 placeholder="Product ID"
                 value={productId}
                 onChange={handleChange}
-              />
-              <label htmlFor="id">Name:</label>
+              /> */}
+              <label htmlFor="id">Title:</label>
               <input
                 className="form-control"
                 type="text"
                 id="name"
-                placeholder="Product Name"
+                placeholder="Product Title"
                 value={product.name}
                 onChange={handleChange}
               />
