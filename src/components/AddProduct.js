@@ -1,5 +1,3 @@
-// AddProduct.js
-
 import { useState, useEffect } from 'react';
 
 function AddProduct({ productId }) {

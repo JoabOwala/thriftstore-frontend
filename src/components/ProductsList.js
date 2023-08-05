@@ -52,11 +52,11 @@ function ProductsList() {
   }, []);
 
   const handleEdit = (productId) => {
-    // Handle edit logic here
+    // Handle edit logic
   };
 
   const handleDelete = (productId) => {
-    // Handle delete logic here
+    // Handle delete logic
   };
 
   return (
