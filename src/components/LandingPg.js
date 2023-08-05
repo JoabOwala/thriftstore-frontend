@@ -87,5 +87,4 @@ function LandingPg() {
     </div>
   );
 }
-
 export default LandingPg;
