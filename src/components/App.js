@@ -1,22 +1,30 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from 'react';
+import React, { useState } from 'react';
 import LandingPg from './LandingPg';
 import HomePage from './HomePage';
 import AddProduct from './AddProduct';
 import ProductsList from './ProductsList';
 import EditProduct from './EditProduct';
 import SignUp from './SignUp';
-import Cart from './Cart';
+import ProductCart from './ProductCart';
 import Admin from './Admin';
 import NavBar from './NavBar';
 import AboutUs from './AboutUs';
 import Login from './Login'
+import Cart from './Cart'
 import Footer from './Footer'
 // import Delete from './components/Admin/Delete';
 
 
 
 function App() {
+
+  const [cartItems, setCartItems] = useState([]);
+
+  // Function to add a product to the cart
+  const addToCart = (product) => {
+    setCartItems([...cartItems, product]);
+  };
   return (
     <BrowserRouter>
     <NavBar />
@@ -29,7 +37,8 @@ function App() {
         <Route path="/ProductsList"element={<ProductsList />} />
         <Route path="/EditProduct"element={<EditProduct />} />
         <Route path="/AddProduct"element={<AddProduct />} />
-        <Route path="/Cart"element={<Cart />} />
+        <Route path="/ProductCart" element={<ProductCart addToCart={addToCart} />} />
+        <Route path="/Cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/SignUp"element={<SignUp />} />
         <Route path="/Admin"element={<Admin />} />
         <Route path="/login"element={<Login />} />
