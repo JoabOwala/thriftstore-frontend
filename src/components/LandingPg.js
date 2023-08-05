@@ -88,5 +88,3 @@ function LandingPg() {
   );
 }
 export default LandingPg;
-
-
