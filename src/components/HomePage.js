@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
- 
+import ProductsList from "./ProductsList"
 
 
 const HomeSection = styled.section`
@@ -116,6 +116,7 @@ function HomePage() {
           <StyledImage src="../images/background.png" alt="" />
         </ImageContainer>
       </HomeSection>
+      <ProductsList/>
     </div>
   );
 }

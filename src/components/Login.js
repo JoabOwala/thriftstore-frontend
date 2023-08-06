@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import ProductsList from "./ProductsList";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false); // Track the login status
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,6 +31,9 @@ function Login() {
         text: "You have logged in successfully!",
         html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
       });
+
+      // Update the login status
+      setLoggedIn(true);
     } catch (error) {
       // Handle login error
       console.error(error);
@@ -39,6 +44,11 @@ function Login() {
       });
     }
   };
+
+  // If logged in, render the ProductsList component
+  if (loggedIn) {
+    return <ProductsList />;
+  }
 
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -104,7 +114,7 @@ function Login() {
                   <small>Sign In with Google</small>
                 </button>
               </div>
-             <div className="row">
+              <div className="row">
                     <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>
             </div>
             </form>

@@ -174,7 +174,7 @@ const Footer = () => {
             &copy; Copyright <strong><span>ThriftShop Shop</span></strong>. All Rights Reserved
           </div>
           <div className="credits">
-            Designed by <a href="#">SA coding</a>
+            Designed by <a href="#">Thrifty</a>
           </div>
         </div>
     </footer>
