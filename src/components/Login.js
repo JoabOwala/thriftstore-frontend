@@ -9,13 +9,27 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:3000/auth/buyer/login", {
+      const response = await fetch("http://127.0.0.1:3001/auth/buyer/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-      });
+      }).then((resp) => {
+        if (resp.ok) {
+          resp.json()
+          Swal.fire({
+            icon: "success",
+            title: "Login Successful",
+            text: "You have logged in successfully!",
+            html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
+           
+          });
+        }
+
+  
+      })
+        
 
       if (!response.ok) {
         throw new Error("Login failed");
@@ -28,6 +42,7 @@ function Login() {
         title: "Login Successful",
         text: "You have logged in successfully!",
         html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
+        
       });
     } catch (error) {
       // Handle login error
