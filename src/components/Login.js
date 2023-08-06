@@ -23,7 +23,7 @@ function Login({setBuyer}) {
             title: "Login Successful",
             text: "You have logged in successfully!",
             html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-            nav ("/Homepage")
+           
           });
         }
 
@@ -42,7 +42,7 @@ function Login({setBuyer}) {
         title: "Login Successful",
         text: "You have logged in successfully!",
         html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-        nav ("/Homepage")
+        
       });
     } catch (error) {
       // Handle login error
