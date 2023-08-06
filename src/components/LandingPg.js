@@ -88,10 +88,7 @@ function LandingPg() {
   );
 }
 
-<<<<<<< HEAD
-export default LandingPg;
-=======
-
 export default LandingPg;
 
->>>>>>> benayah
+
+

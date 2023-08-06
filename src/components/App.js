@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from 'react';
+import React, {useState} from 'react';
 import LandingPg from './LandingPg';
 import HomePage from './HomePage';
 import AddProduct from './AddProduct';
@@ -12,88 +12,45 @@ import NavBar from './NavBar';
 import AboutUs from './AboutUs';
 import Login from './Login'
 import Footer from './Footer'
-// import Delete from './components/Admin/Delete';
-
-
+import SingleProduct from "./SingleProduct";
+import Swal from "sweetalert2";
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+
+  // Function to add a product to the cart
+  const addToCart = (product) => {
+    setCartItems([...cartItems, product]);
+
+    // Show success message using SweetAlert
+    Swal.fire(
+      'Added to cart',
+      'Product has been added to your cart.',
+      'success'
+    );
+  };
+
   return (
     <BrowserRouter>
-    <NavBar />
-    
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<LandingPg />} />
+        <Route path="/HomePage" element={<HomePage addToCart={addToCart}/>} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/ProductsList" element={<ProductsList />} />
+        <Route path="/EditProduct" element={<EditProduct />} />
+        <Route path="/AddProduct" element={<AddProduct />} />
+        <Route path="/Cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
 
-    <Routes>
-      <Route path="/" element={<LandingPg />} />
-        <Route path="/HomePage"element={<HomePage />} />
-        <Route path="/AboutUs"element={<AboutUs />} />
-        <Route path="/ProductsList"element={<ProductsList />} />
-        <Route path="/EditProduct"element={<EditProduct />} />
-        <Route path="/AddProduct"element={<AddProduct />} />
-        <Route path="/Cart"element={<Cart />} />
-        <Route path="/SignUp"element={<SignUp />} />
-        <Route path="/Admin"element={<Admin />} />
-        <Route path="/login"element={<Login />} />
-        
-        
-      {/* <Route  path="/delete" element={<Delete/>} /> */}
-        
-      
-      
-        
-      
-    </Routes>
-    <Footer />
-    
-  </BrowserRouter>
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
+        {/* Use the component prop without curly braces */}
+        <Route path="/products/:id" element={<SingleProduct addToCart={addToCart}/>} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
 export default App;
-// import React, { useEffect, useState } from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import NavBar from "./NavBar";
-// import HomePage from "./HomePage";
-// import LandingPg from "./LandingPg"
-// import SignUp from "./SignUp"
-// import Login from "./Login"
-// // Import your other components like SignUp and Login here
-
-// // Assuming you have the SignUp and Login components imported as SignUpComponent and LoginComponent
-
-// function App() {
-//   const [buyer, setBuyer] = useState(null);
-
-//   useEffect(() => {
-//     // auto-login
-//     fetch("/me").then((r) => {
-//       if (r.ok) {
-//         r.json().then((buyer) => setBuyer(buyer));
-//       }
-//     });
-//   }, []);
-
-//   return (
-//     <BrowserRouter>
-//       <>
-//         <NavBar buyer={buyer} setBuyer={setBuyer} />
-//         <main>
-//           <Routes>
-//             {buyer ? (
-//               <Route path="/" element={<LandingPg />} />
-//             ) : (
-//               <>
-//                 <Route path="/signup" element={<SignUp />} />
-//                 <Route path="/login" element={<Login />} />
-//                 <Route path="/" element={<HomePage />} />
-//               </>
-//             )}
-//           </Routes>
-//         </main>
-//       </>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default App;
-
-

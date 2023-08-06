@@ -1,184 +1,203 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FooterSection = styled.footer`
+/* footer */
+const FooterContainer = styled.div`
   padding: 0 0 30px 0px;
   color: white;
   font-size: 14px;
   background-color: rgb(67 0 86);
   margin-top: 100px;
+`;
 
-  .footer-top {
-    padding: 60px 0 30px 0;
-    background-color: rgb(67 0 86);
-    color: white;
-  }
+const FooterTop = styled.div`
+  padding: 60px 0 30px 0;
+  background-color: rgb(67 0 86);
+  color: white;
+`;
 
-  .footer-top .footer-contact {
-    margin-bottom: 30px;
-  }
+const FooterContact = styled.div`
+  margin-bottom: 30px;
+`;
 
-  .footer-top .footer-contact h3 {
-    color: #ffc800;
-  }
+const FooterContactHeading = styled.h3`
+  color: #ffc800;
+`;
 
-  .footer-top .footer-contact h4 {
-    font-size: 22px;
-    margin: 0 0 30px 0;
-    padding: 2px 0 2px 0;
-    line-height: 1;
-    font-weight: 700;
-  }
+const FooterContactTitle = styled.h4`
+  font-size: 22px;
+  margin: 0 0 30px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+`;
 
-  .footer-top .footer-contact p {
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 0;
-    color: white;
-  }
+const FooterContactText = styled.p`
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  color: white;
+`;
 
-  .footer-top h4 {
-    font-size: 16px;
-    font-weight: bold;
-    position: relative;
-    padding-bottom: 12px;
-  }
+const FooterTopHeading = styled.h4`
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+`;
 
-  .footer-top .footer-links {
-    margin-bottom: 30px;
-    margin-top: 10px;
-  }
+const FooterLinks = styled.div`
+  margin-bottom: 30px;
+  margin-top: 10px;
+`;
 
-  .footer-top .footer-links h4 {
-    color: #ffc800;
-  }
+const FooterLinksHeading = styled.h4`
+  color: #ffc800;
+`;
 
-  .footer-top .footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+const FooterLinksList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
 
-  .footer-top .footer-links ul li {
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-  }
+const FooterLinksListItem = styled.li`
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+`;
 
-  .footer-top .footer-links ul li a {
-    text-decoration: none;
-    color: white;
-    display: inline-block;
-    line-height: 1;
-    font-weight: bold;
-    transition: 0.5s ease;
-  }
+const FooterLinksListItemLink = styled.a`
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  line-height: 1;
+  font-weight: bold;
+  transition: 0.5s ease;
 
-  .footer-top .footer-links ul li a:hover {
-    color: #ffc800;
-  }
-
-  .footer-top .socail-links a {
-    font-size: 18px;
-    display: inline-block;
-    text-decoration: none;
-    background-color: #373737;
-    color: white;
-    line-height: 1;
-    padding: 8px 0;
-    margin-right: 4px;
-    border-radius: 50%;
-    text-align: center;
-    width: 36px;
-    transition: 0.5s ease;
-  }
-
-  .footer-top .socail-links a:hover {
-    background-color: #ffc800;
-    color: white;
-  }
-
-  .copyright {
-    text-align: center;
-    float: left;
-  }
-
-  .credits {
-    float: right;
-    text-align: center;
-    font-size: 13px;
-  }
-
-  .credits a {
+  &:hover {
     color: #ffc800;
   }
 `;
 
+const SocialLinks = styled.div`
+  font-size: 18px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #373737;
+  color: white;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  transition: 0.5s ease;
+
+  &:hover {
+    background-color: #ffc800;
+    color: white;
+  }
+`;
+
+const Copyright = styled.div`
+  text-align: center;
+  float: left;
+`;
+
+const Credits = styled.div`
+  float: right;
+  text-align: center;
+  font-size: 13px;
+`;
+
+/* footer */
+
 const Footer = () => {
   return (
-    <div>
+    <FooterContainer>
       <footer id="footer">
-        <div className="footer-top">
+        <FooterTop>
           <div className="container">
             <div className="row">
-              <div className="col-lg-3 col-md-6 footer-contact">
-                <h3>Thrift Shop</h3>
-                <p>
+              <FooterContact className="col-lg-3 col-md-6">
+                <FooterContactHeading>Thrift Shop</FooterContactHeading>
+                <FooterContactText>
                   Karachi <br />
                   Sindh <br />
                   Pakistan <br />
-                </p>
+                </FooterContactText>
                 <strong>Phone:</strong> +000000000000000 <br />
                 <strong>Email:</strong> electronicshop@example.com <br />
-              </div>
+              </FooterContact>
 
-              <div className="col-lg-3 col-md-6 footer-links">
-                <h4>Useful Links</h4>
-                <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Services</a></li>
-                  <li><a href="#">Terms of Service</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                </ul>
-              </div>
+              <FooterLinks className="col-lg-3 col-md-6">
+                <FooterLinksHeading>Useful Links</FooterLinksHeading>
+                <FooterLinksList>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Home</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">About Us</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Services</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Terms of Service</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Privacy Policy</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                </FooterLinksList>
+              </FooterLinks>
 
-              <div className="col-lg-3 col-md-6 footer-links">
-                <h4>Our Services</h4>
-                <ul>
-                  <li><a href="#">PS 5</a></li>
-                  <li><a href="#">Computer</a></li>
-                  <li><a href="#">Gaming Laptop</a></li>
-                  <li><a href="#">Mobile Phone</a></li>
-                  <li><a href="#">Gaming Gadget</a></li>
-                </ul>
-              </div>
+              <FooterLinks className="col-lg-3 col-md-6">
+                <FooterLinksHeading>Our Services</FooterLinksHeading>
+                <FooterLinksList>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">PS 5</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Computer</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Gaming Laptop</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Mobile Phone</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                  <FooterLinksListItem>
+                    <FooterLinksListItemLink href="#">Gaming Gadget</FooterLinksListItemLink>
+                  </FooterLinksListItem>
+                </FooterLinksList>
+              </FooterLinks>
 
-              <div className="col-lg-3 col-md-6 footer-links">
-                <h4>Our Social Networks</h4>
+              <FooterLinks className="col-lg-3 col-md-6">
+                <FooterLinksHeading>Our Social Networks</FooterLinksHeading>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, quibusdam.</p>
                 <div className="social-links mt-3">
-                  <a href="#"><i className="fab fa-twitter"></i></a>
-                  <a href="#"><i className="fab fa-facebook-f"></i></a>
-                  <a href="#"><i className="fab fa-instagram"></i></a>
-                  <a href="#"><i className="fab fa-skype"></i></a>
-                  <a href="#"><i className="fab fa-linkedin"></i></a>
+                  <SocialLinks href="#"><i className="fab fa-twitter"></i></SocialLinks>
+                  <SocialLinks href="#"><i className="fab fa-facebook-f"></i></SocialLinks>
+                  <SocialLinks href="#"><i className="fab fa-instagram"></i></SocialLinks>
+                  <SocialLinks href="#"><i className="fab fa-skype"></i></SocialLinks>
+                  <SocialLinks href="#"><i className="fab fa-linkedin"></i></SocialLinks>
                 </div>
-              </div>
+              </FooterLinks>
             </div>
           </div>
-        </div>
+        </FooterTop>
         <hr />
         <div className="container py-4">
-          <div className="copyright">
+          <Copyright>
             &copy; Copyright <strong><span>ThriftShop Shop</span></strong>. All Rights Reserved
-          </div>
-          <div className="credits">
+          </Copyright>
+          <Credits>
             Designed by <a href="#">SA coding</a>
-          </div>
+          </Credits>
         </div>
-    </footer>
-    </div>
+      </footer>
+    </FooterContainer>
   );
 };
 
