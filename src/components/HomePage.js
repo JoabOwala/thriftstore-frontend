@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
- 
+import { Link } from 'react-router-dom';
 
 
 const HomeSection = styled.section`
@@ -154,27 +154,28 @@ const ProductCardPrice = styled.h2`
   }
 `;
 
-function HomePage() {
+function HomePage({ addToCart }) {
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch products when the component mounts
-    fetchProducts();
+    // Fetch products from the backend API
+    fetch("http://127.0.0.1:3001/products")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Update the state with the received products
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
   }, []);
 
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:3000/products");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      setProducts(data);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
 
   return (
     <div>
@@ -200,30 +201,40 @@ function HomePage() {
       </HomeSection>
 
       <ProductCardsContainer className="container" id="product-cards">
-        <h1 className="text-center">PRODUCTS</h1>
-        <div className="row" style={{ marginTop: "30px" }}>
-          {products.map((product) => (
-            <div key={product.id} className="col-md-3 py-3 py-md-0">
-              <ProductCard className="card">
-                <ProductCardImage src={product.photo_url} alt="" />
-                <ProductCardBody className="card-body">
-                  <ProductCardHeading className="text-center">{product.title}</ProductCardHeading>
-                  <ProductCardText className="text-center">{product.description}</ProductCardText>
-                  <ProductCardStars className="star text-center">
-                    {/* Display star icons here */}
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <i key={index} className={`fa-solid fa-star ${index < product.rating ? "checked" : ""}`} />
-                    ))}
-                  </ProductCardStars>
-                  <ProductCardPrice>
-                    ${product.price} <span><i className="fa-solid fa-cart-shopping"></i></span>
-                  </ProductCardPrice>
-                </ProductCardBody>
-              </ProductCard>
-            </div>
-          ))}
-        </div>
-      </ProductCardsContainer>
+      <h1 className="text-center">PRODUCTS</h1>
+      <div className="row" style={{ marginTop: "30px" }}>
+        {products.map((product) => (
+          <div key={product.id} className="col-md-3 py-3 py-md-0">
+            <ProductCard className="card">
+              {/* Wrap the product image in a Link component */}
+              <Link to={`/products/${product.id}`}>
+                <ProductCardImage src={product.photo_url} alt=""  />
+              </Link>
+              <ProductCardBody className="card-body">
+                <ProductCardHeading className="text-center">{product.title}</ProductCardHeading>
+                <ProductCardText className="text-center">{product.description}</ProductCardText>
+                <ProductCardStars className="star text-center">
+                  {/* Display star icons here */}
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <i key={index} className={`fa-solid fa-star ${index < product.rating ? "checked" : ""}`} />
+                  ))}
+                </ProductCardStars>
+                <ProductCardPrice>
+                  ${product.price} 
+
+                  <button className="btn btn-primary" onClick={() => addToCart(product)}>
+                    Add to Cart
+                  </button>
+
+                  <span><i className="bi bi-cart"></i></span>
+                </ProductCardPrice>
+              </ProductCardBody>
+            </ProductCard>
+          </div>
+        ))}
+      </div>
+    </ProductCardsContainer>
+
   </div>
   );
 }

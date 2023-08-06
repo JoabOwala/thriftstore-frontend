@@ -120,7 +120,7 @@ function SignUp() {
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const response = await fetch("http://127.0.0.1:3000/buyers", {
+        const response = await fetch("http://127.0.0.1:3001/buyers", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
