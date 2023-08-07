@@ -123,12 +123,12 @@ const Footer = () => {
               <FooterContact className="col-lg-3 col-md-6">
                 <FooterContactHeading>Thrift Shop</FooterContactHeading>
                 <FooterContactText>
-                  Karachi <br />
-                  Sindh <br />
-                  Pakistan <br />
+                  Nairobi <br />
+                  Africa <br />
+                  Kenya <br />
                 </FooterContactText>
-                <strong>Phone:</strong> +000000000000000 <br />
-                <strong>Email:</strong> electronicshop@example.com <br />
+                <strong>Phone:</strong> +254724567904 <br />
+                <strong>Email:</strong> thriftshop@gmail.com <br />
               </FooterContact>
 
               <FooterLinks className="col-lg-3 col-md-6">
@@ -144,7 +144,7 @@ const Footer = () => {
                     <FooterLinksListItemLink href="#">Services</FooterLinksListItemLink>
                   </FooterLinksListItem>
                   <FooterLinksListItem>
-                    <FooterLinksListItemLink href="#">Terms of Service</FooterLinksListItemLink>
+                    <FooterLinksListItemLink href="#">Terms of Conditions</FooterLinksListItemLink>
                   </FooterLinksListItem>
                   <FooterLinksListItem>
                     <FooterLinksListItemLink href="#">Privacy Policy</FooterLinksListItemLink>
@@ -156,26 +156,26 @@ const Footer = () => {
                 <FooterLinksHeading>Our Services</FooterLinksHeading>
                 <FooterLinksList>
                   <FooterLinksListItem>
-                    <FooterLinksListItemLink href="#">PS 5</FooterLinksListItemLink>
+                    <FooterLinksListItemLink href="#">Electronics</FooterLinksListItemLink>
                   </FooterLinksListItem>
                   <FooterLinksListItem>
-                    <FooterLinksListItemLink href="#">Computer</FooterLinksListItemLink>
+                    <FooterLinksListItemLink href="#">Locomotives</FooterLinksListItemLink>
                   </FooterLinksListItem>
                   <FooterLinksListItem>
-                    <FooterLinksListItemLink href="#">Gaming Laptop</FooterLinksListItemLink>
+                    <FooterLinksListItemLink href="#">Clothing</FooterLinksListItemLink>
                   </FooterLinksListItem>
                   <FooterLinksListItem>
-                    <FooterLinksListItemLink href="#">Mobile Phone</FooterLinksListItemLink>
+                    <FooterLinksListItemLink href="#">Furnitures</FooterLinksListItemLink>
                   </FooterLinksListItem>
                   <FooterLinksListItem>
-                    <FooterLinksListItemLink href="#">Gaming Gadget</FooterLinksListItemLink>
+                    <FooterLinksListItemLink href="#">Kitchen Utensils</FooterLinksListItemLink>
                   </FooterLinksListItem>
                 </FooterLinksList>
               </FooterLinks>
 
               <FooterLinks className="col-lg-3 col-md-6">
                 <FooterLinksHeading>Our Social Networks</FooterLinksHeading>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, quibusdam.</p>
+                <p>Find us on all social media by the name of @thriftshop.com</p>
                 <div className="social-links mt-3">
                   <SocialLinks href="#"><i className="fab fa-twitter"></i></SocialLinks>
                   <SocialLinks href="#"><i className="fab fa-facebook-f"></i></SocialLinks>

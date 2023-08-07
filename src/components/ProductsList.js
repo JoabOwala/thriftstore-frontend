@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -79,13 +80,11 @@ function ProductsList() {
                   readOnly
                 />
                 {/* Add other input fields here */}
-                <button
-                  className="btn btn-primary mr-2"
-                  type="button"
-                  onClick={() => handleEdit(product.id)}
-                >
-                  Edit
-                </button>
+                <button> 
+                <Link to={`/edit/${product.id}`} className="btn btn-primary mr-2">
+                Edit
+              </Link>
+              </button>
                 <button
                   className="btn btn-primary"
                   type="button"

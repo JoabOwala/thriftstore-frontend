@@ -33,16 +33,10 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/editproduct" className="nav-link">
-                Edit product
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/addproduct" className="nav-link">
                 Add Product
               </Link>
             </li>
-            
             <li className="nav-item">
               <Link to="/cart" className="nav-link">
                 Cart
