@@ -1,47 +1,53 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom"; // Import useHistory from React Router
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("buyer");
 
-const handleLogin = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await fetch("http://127.0.0.1:3001/auth/buyer/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      // Show SweetAlert with the logged-in buyer details
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful",
-        text: "You have logged in successfully!",
-        html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
+  // Moved the handleLogin function outside of the component
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://127.0.0.1:3001/auth/buyer/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
       });
-    } else {
-      // Handle login error for non-200 status codes
-      throw new Error("Login failed");
-    }
-  } catch (error) {
-    // Handle login error
-    console.error(error);
-    Swal.fire({
-      icon: "error",
-      title: "Login Failed",
-      text: "Invalid email or password",
-    });
-  }
-};
 
+      if (response.ok) {
+        const data = await response.json();
+        // Show SweetAlert with the logged-in buyer details
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "You have logged in successfully!",
+          html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
+        }).then(() => {
+          // Redirect to the homepage after the SweetAlert is closed
+          history.push("/homepage"); // Replace '/homepage' with the actual path to your homepage route
+        });
+      } else {
+        // Handle login error for non-200 status codes
+        throw new Error("Login failed");
+      }
+    } catch (error) {
+      // Handle login error
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: "Invalid email or password",
+      });
+    }
+  };
+
+  // Get the history object using the useHistory hook
+  const history = useHistory();
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
       <div className="row border rounded-5 p-3 bg-white shadow box-area">
