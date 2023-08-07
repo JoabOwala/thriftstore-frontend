@@ -1,8 +1,10 @@
 // EditProduct.js
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-function EditProduct({ productId }) {
+function EditProduct() {
+  const { id: productId } = useParams();
 
   const [product, setProduct] = useState({
     
