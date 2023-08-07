@@ -7,9 +7,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("buyer");
 
-  // Get the history object using the useHistory hook
-  const history = useHistory();
-
   // Moved the handleLogin function outside of the component
   const handleLogin = async (e) => {
     e.preventDefault();
