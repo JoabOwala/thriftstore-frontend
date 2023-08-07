@@ -42,11 +42,7 @@ function Navbar() {
                 Add Product
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/productcart" className="nav-link">
-                ProductCart
-              </Link>
-            </li>
+            
             <li className="nav-item">
               <Link to="/cart" className="nav-link">
                 Cart

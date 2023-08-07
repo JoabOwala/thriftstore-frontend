@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState("buyer");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -94,6 +95,38 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+              </div>
+              <div className="form-check mb-3">
+               <input
+                 type="radio"
+                 className="form-check-input"
+                 name="userType"
+                 value="buyer"
+                 checked
+                  // The "checked" attribute above means the default selected value is "buyer"
+                 onChange={() => {}}
+                />
+               <label className="form-check-label">Buyer</label>
+                            </div>
+              <div className="form-check mb-3">
+                <input
+                  type="radio"
+                  className="form-check-input"
+                                name="userType"
+                  value="seller"
+                  onChange={() => {}}
+                />
+                <label className="form-check-label">Seller</label>
+              </div>
+              <div className="form-check mb-3">
+                <input
+                  type="radio"
+                  className="form-check-input"
+                  name="userType"
+                  value="admin"
+                  onChange={() => {}}
+                />
+                <label className="form-check-label">Admin</label>
               </div>
               <div className="input-group mb-5 d-flex justify-content-between">
                 <div className="form-check">
