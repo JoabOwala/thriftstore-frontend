@@ -225,7 +225,7 @@ function HomePage({ addToCart }) {
           </div>
         </Content>
         <ImageContainer>
-          <StyledImage src="https://o.remove.bg/downloads/86006db0-4c53-4b72-8d3f-e06eca80923b/Consumer-Electronics-Appliance_blog-removebg-preview.png" alt="" />
+          <StyledImage src="https://o.remove.bg/downloads/b6b357df-5435-4aa4-91ea-0b755d4a38ab/List-Of-Best-Online-Electronic-Shops-In-Kenya-removebg-preview.png" alt="" />
         </ImageContainer>
       </HomeSection>
 
