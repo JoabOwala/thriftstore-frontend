@@ -43,11 +43,8 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/ProductsList" element={<ProductsList />} />
         <Route path="/AddProduct" element={<AddProduct />} />
-<<<<<<< HEAD
         <Route path="/edit/:id" element={<EditProduct />} />
         <Route path="/Cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
-=======
->>>>>>> b3afa3e (cart, homepage)
         <Route
           path="/Cart"
           element={<Cart cartItems={cartItems} setCartItems={setCartItems} removeFromCart={removeFromCart} />}
