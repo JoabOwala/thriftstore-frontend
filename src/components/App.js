@@ -6,7 +6,6 @@ import AddProduct from './AddProduct';
 import ProductsList from './ProductsList';
 import EditProduct from './EditProduct';
 import SignUp from './SignUp';
-import ProductCart from './ProductCart';
 import Admin from './Admin';
 import NavBar from './NavBar';
 import AboutUs from './AboutUs';
