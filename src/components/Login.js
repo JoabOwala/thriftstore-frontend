@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState("buyer");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,35 +16,21 @@ function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-      }).then((resp) => {
-        if (resp.ok) {
-          resp.json()
-          Swal.fire({
-            icon: "success",
-            title: "Login Successful",
-            text: "You have logged in successfully!",
-            html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-           
-          });
-        }
-
+      });
   
-      })
-        
-
-      if (!response.ok) {
+      if (response.ok) {
+        const data = await response.json();
+        // Show SweetAlert with the logged-in buyer details
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "You have logged in successfully!",
+          html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
+        });
+      } else {
+        // Handle login error for non-200 status codes
         throw new Error("Login failed");
       }
-
-      const data = await response.json();
-      // Show SweetAlert with the logged-in buyer details
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful",
-        text: "You have logged in successfully!",
-        html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-        
-      });
     } catch (error) {
       // Handle login error
       console.error(error);
@@ -95,6 +82,29 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              <div className="form-check mb-3">
+               <input
+                 type="radio"
+                 className="form-check-input"
+                 name="userType"
+                 value="buyer"
+                 checked
+                  // The "checked" attribute above means the default selected value is "buyer"
+                 onChange={() => {}}
+                />
+               <label className="form-check-label">Buyer</label>
+                            </div>
+              <div className="form-check mb-3">
+                <input
+                  type="radio"
+                  className="form-check-input"
+                                name="userType"
+                  value="seller"
+                  onChange={() => {}}
+                />
+                <label className="form-check-label">Seller</label>
+              </div>
+              
               <div className="input-group mb-5 d-flex justify-content-between">
                 <div className="form-check">
                   <input type="checkbox" className="form-check-input" id="formCheck" />
@@ -110,7 +120,10 @@ function Login() {
               </div>
               <div className="input-group mb-3">
                 <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">
+                <Link to="/homepage">
                   Login
+                  </Link>
+                  
                 </button>
               </div>
               <div className="input-group mb-3">
@@ -120,7 +133,7 @@ function Login() {
                 </button>
               </div>
              <div className="row">
-                    <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>
+                    <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>      
             </div>
             </form>
           </div>
