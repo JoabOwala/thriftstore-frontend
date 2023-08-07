@@ -7,35 +7,18 @@ function Login() {
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("buyer");
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://127.0.0.1:3001/auth/buyer/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      }).then((resp) => {
-        if (resp.ok) {
-          resp.json()
-          Swal.fire({
-            icon: "success",
-            title: "Login Successful",
-            text: "You have logged in successfully!",
-            html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-           
-          });
-        }
+const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch("http://127.0.0.1:3001/auth/buyer/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
-  
-      })
-        
-
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-
+    if (response.ok) {
       const data = await response.json();
       // Show SweetAlert with the logged-in buyer details
       Swal.fire({
@@ -43,18 +26,21 @@ function Login() {
         title: "Login Successful",
         text: "You have logged in successfully!",
         html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-        
       });
-    } catch (error) {
-      // Handle login error
-      console.error(error);
-      Swal.fire({
-        icon: "error",
-        title: "Login Failed",
-        text: "Invalid email or password",
-      });
+    } else {
+      // Handle login error for non-200 status codes
+      throw new Error("Login failed");
     }
-  };
+  } catch (error) {
+    // Handle login error
+    console.error(error);
+    Swal.fire({
+      icon: "error",
+      title: "Login Failed",
+      text: "Invalid email or password",
+    });
+  }
+};
 
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">

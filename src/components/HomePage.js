@@ -94,15 +94,22 @@ const Button = styled.button`
   
 `;
 const ProductCardsContainer = styled.div`
-  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 30px;
 `;
 
 const ProductCard = styled.div`
+  width: 100%;
+  max-width: 300px; /* Set the maximum width of each card */
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+  height: 100%; /* Set a fixed height for each card */
 
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -111,15 +118,18 @@ const ProductCard = styled.div`
 
 const ProductCardImage = styled.img`
   width: 100%;
-  height: 200px;
+  height: 200px; /* Set a fixed height for the image */
   object-fit: cover;
   border-radius: 5px;
 `;
 
 const ProductCardBody = styled.div`
   margin-top: 10px;
+  height: 100%; /* Set a fixed height for the card body */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
-
 const ProductCardHeading = styled.h3`
   font-size: 20px;
   color: black;
@@ -146,6 +156,7 @@ const ProductCardPrice = styled.h2`
   font-size: 20px;
   color: black;
   margin-top: 20px;
+  text-align: center;
 
   span {
     float: right;
@@ -153,6 +164,24 @@ const ProductCardPrice = styled.h2`
     cursor: pointer;
   }
 `;
+const ProductsHeadingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+`;
+const ProductsHeading = styled.h1`
+  font-size: 28px;
+  color: #333;
+  padding: 0 20px;
+  background-color: #fff;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
 
 function HomePage({ addToCart }) {
 
@@ -196,7 +225,7 @@ function HomePage({ addToCart }) {
           </div>
         </Content>
         <ImageContainer>
-          <StyledImage src="https://w7.pngwing.com/pngs/124/695/png-transparent-digital-electronic-products-product-physical-map-digital-electronic-products-phone-thumbnail.png" alt="" />
+          <StyledImage src="https://o.remove.bg/downloads/86006db0-4c53-4b72-8d3f-e06eca80923b/Consumer-Electronics-Appliance_blog-removebg-preview.png" alt="" />
         </ImageContainer>
       </HomeSection>
 
@@ -220,7 +249,7 @@ function HomePage({ addToCart }) {
                   ))}
                 </ProductCardStars>
                 <ProductCardPrice>
-                  ${product.price} 
+                  ${product.price} {""}
 
                   <button className="btn btn-primary" onClick={() => addToCart(product)}>
                     Add to Cart
