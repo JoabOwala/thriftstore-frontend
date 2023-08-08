@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2"
+import { Link } from "react-router-dom";
 
 const MainContainer = styled.div`
   position: absolute;
@@ -252,19 +253,7 @@ function SignUp() {
                 <span>Seller</span>
               </label>
             </div>
-            <div className="form-group">
-              <label>
-                <input
-                  type="radio"
-                  name="userType"
-                  value="admin"
-                  required
-                  checked={userType === "admin"}
-                  onChange={() => setUserType("admin")}
-                />
-                <span>Admin</span>
-              </label>
-            </div>
+            
 
             <div className="form-group">
               <label>
@@ -280,6 +269,9 @@ function SignUp() {
             </div>
 
             <Button type="submit" className="button" value="CREATE ACCOUNT" />
+            <div className="row">
+                    <small>Already have an account? <Link to="/login">Log in</Link></small>
+                    </div> 
           </form>
         </MyLeftCtn>  
         <MyRightCtn>

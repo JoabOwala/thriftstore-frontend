@@ -110,16 +110,7 @@ function Login() {
                 />
                 <label className="form-check-label">Seller</label>
               </div>
-              <div className="form-check mb-3">
-                <input
-                  type="radio"
-                  className="form-check-input"
-                  name="userType"
-                  value="admin"
-                  onChange={() => {}}
-                />
-                <label className="form-check-label">Admin</label>
-              </div>
+              
               <div className="input-group mb-5 d-flex justify-content-between">
                 <div className="form-check">
                   <input type="checkbox" className="form-check-input" id="formCheck" />
@@ -135,7 +126,10 @@ function Login() {
               </div>
               <div className="input-group mb-3">
                 <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">
+                <Link to="/homepage">
                   Login
+                  </Link>
+                  
                 </button>
               </div>
               <div className="input-group mb-3">
@@ -145,7 +139,7 @@ function Login() {
                 </button>
               </div>
              <div className="row">
-                    <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>
+                    <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>      
             </div>
             </form>
           </div>
