@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
+import {AuthContext} from './AuthContext';
 
 function Login() {
+  const {login} = useContext(AuthContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("buyer");

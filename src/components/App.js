@@ -14,6 +14,7 @@ import Cart from './Cart'
 import Footer from './Footer'
 import SingleProduct from "./SingleProduct";
 import Swal from "sweetalert2";
+import { AuthProvider } from "./AuthContext";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
+     <AuthProvider>
       <NavBar />
       <Routes>
         <Route path="/" element={<LandingPg />} />
@@ -57,6 +59,7 @@ function App() {
         <Route path="/products/:id" element={<SingleProduct addToCart={addToCart}/>} />
       </Routes>
       <Footer />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

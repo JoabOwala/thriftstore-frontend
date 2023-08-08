@@ -1,11 +1,15 @@
-import React from "react";
+import React,{useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import { AuthContext } from "./AuthContext";
 
 const Logo = styled.h2`
   color: #ffc800;
 `;
 function Navbar() {
+  const { current_user, logout } = useContext(AuthContext);
+
+  console.log("current user in navbar", current_user);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -67,6 +71,14 @@ function Navbar() {
               <Link to="/admin" className="nav-link">
                 <b>Admin</b>
               </Link>
+            </li>
+            <li className="nav-item">
+              <button
+                className="nav-link btn btn-danger text-white"
+                onClick={logout}
+              >
+                Sign out
+              </button>
             </li>
             {/* <li className="nav-item">
               <button

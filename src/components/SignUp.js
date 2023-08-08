@@ -109,7 +109,7 @@ function SignUp() {
     email: "",
     password: "",
   });
-  const [userType, setUserType] = useState("buyer"); // Set the default user type to "buyer"
+  const [userType, setUserType] = useState(""); // Set the default user type to "buyer"
   const [buyerLocation, setBuyerLocation] = useState("");
   const [buyerContact, setBuyerContact] = useState("");
   
@@ -126,19 +126,58 @@ function SignUp() {
     }
   };
     // Function to handle form submission
+    // const handleSubmit = async (event) => {
+    //   event.preventDefault();
+    //   try {
+    //     const response = await fetch("http://127.0.0.1:3001/buyers", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(formData),
+    //     });
+        
+    //     const data = await response.json();
+    //     console.log("", data);
+    
+    //     // Show SweetAlert success popup
+    //     Swal.fire({
+    //       icon: "success",
+    //       title: "Sign Up Successful",
+    //       text: "You have signed up successfully!",
+    //     });
+    //   } catch (error) {
+    //     console.error("Error creating buyer:", error);
+    
+    //     // Show SweetAlert error popup
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Sign Up Failed",
+    //       text: "An error occurred during signup.",
+    //     });
+    //   }
+    // };
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const response = await fetch("http://127.0.0.1:3001/buyers", {
+        let endpoint = "";
+        if (userType === "buyer") {
+          endpoint = "http://127.0.0.1:3001/buyers";
+        } else if (userType === "seller") {
+          endpoint = "http://127.0.0.1:3001/sellers";
+        }
+  
+        const response = await fetch(endpoint, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
+  
         const data = await response.json();
-        console.log("New buyer created:", data);
-    
+        console.log("New user created:", data);
+  
         // Show SweetAlert success popup
         Swal.fire({
           icon: "success",
@@ -146,8 +185,8 @@ function SignUp() {
           text: "You have signed up successfully!",
         });
       } catch (error) {
-        console.error("Error creating buyer:", error);
-    
+        console.error("Error creating user:", error);
+  
         // Show SweetAlert error popup
         Swal.fire({
           icon: "error",
