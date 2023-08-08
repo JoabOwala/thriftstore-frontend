@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const HomeSection = styled.section`
-  width: 100%;
+  width: 86%;
   height: 80vh;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@ const HomeSection = styled.section`
   position: relative;
   background-color: #a9a9a92b;
   z-index: 0;
-  margin-left: 15px;
+  margin-left: 90px;
 
   @media screen and (max-width: 1200px) {
     height: 90vh;
@@ -225,7 +225,7 @@ function HomePage({ addToCart }) {
           </div>
         </Content>
         <ImageContainer>
-          <StyledImage src="https://o.remove.bg/downloads/86006db0-4c53-4b72-8d3f-e06eca80923b/Consumer-Electronics-Appliance_blog-removebg-preview.png" alt="" />
+          <StyledImage src="https://o.remove.bg/downloads/5d7fae5c-9a6a-412c-b3ec-7ba2910dd7aa/774-7744281_samsung-electronics-samsung-electronic-product-png-removebg-preview.png" alt="" />
         </ImageContainer>
       </HomeSection>
 

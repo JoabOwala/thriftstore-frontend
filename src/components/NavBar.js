@@ -1,12 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
+const Logo = styled.h2`
+  color: #ffc800;
+`;
+const Subt =styled.h6`
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #ff6600; /* Change to the desired hover color */
+  }
+`;
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <b>Thrift shop</b>
+          
+          <b><Logo id="logo">ThriftStore</Logo></b>
+          
         </Link>
 
         <button
@@ -21,43 +36,45 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto me-5">
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link to="/homepage" className="nav-link">
-                Homepage
+                <Subt>Home</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/productslist" className="nav-link">
-                Productlist
+                <Subt>Products</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/addproduct" className="nav-link">
-                Add Product
+                <Subt>Add Product</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/cart" className="nav-link">
-                Cart
+                <Subt>Cart</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/signup" className="nav-link">
-                Sign up
+                <Subt>SignUp</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/aboutus" className="nav-link">
-                About us
+                <Subt>AboutUs</Subt>
               </Link>
+              </li>
+              <li>
               <Link to="/login" className="nav-link">
-                Login
+                <Subt>Login</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/admin" className="nav-link">
-                Admin
+                <Subt>Admin</Subt>
               </Link>
             </li>
             {/* <li className="nav-item">

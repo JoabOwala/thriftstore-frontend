@@ -1,4 +1,6 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+
 
 const Cart = ({ cartItems, removeFromCart, setCartItems, clearCart }) => {
   const handleRemoveFromCart = (productId) => {
@@ -34,6 +36,18 @@ const Cart = ({ cartItems, removeFromCart, setCartItems, clearCart }) => {
   const getTotalAmount = () => {
     const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     return totalAmount;
+  };
+
+  const handleCheckout = () => {
+    Swal.fire({
+      title: 'Checkout Successful!',
+      text: 'Thank you for your purchase.',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    }).then(() => {
+      // Redirect the user to the HomePage
+      window.location.href = '/HomePage';
+    });
   };
 
   return (
@@ -183,7 +197,7 @@ const Cart = ({ cartItems, removeFromCart, setCartItems, clearCart }) => {
                 </li>
               </ul>
 
-              <button type="button" className="btn btn-primary btn-lg btn-block">
+              <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => handleCheckout()}>
                 Go to checkout
               </button>
             </div>

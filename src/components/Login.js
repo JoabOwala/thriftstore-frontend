@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { Link, useHistory } from "react-router-dom"; // Import useHistory from React Router
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("buyer");
+  const nav = useNavigate();
 
-  // Moved the handleLogin function outside of the component
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -27,10 +27,10 @@ function Login() {
           title: "Login Successful",
           text: "You have logged in successfully!",
           html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-        }).then(() => {
-          // Redirect to the homepage after the SweetAlert is closed
-          history.push("/homepage"); // Replace '/homepage' with the actual path to your homepage route
         });
+
+        // Navigate to the homepage after successful login
+        nav('/homepage');
       } else {
         // Handle login error for non-200 status codes
         throw new Error("Login failed");
@@ -47,7 +47,7 @@ function Login() {
   };
 
   // Get the history object using the useHistory hook
-  const history = useHistory();
+
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
       <div className="row border rounded-5 p-3 bg-white shadow box-area">
