@@ -19,11 +19,6 @@ const Subt = styled.h6`
 `;
 
 function Navbar() {
-<<<<<<< HEAD
-  const { current_user, logout } = useContext(AuthContext);
-
-  console.log(current_user, logout);
-=======
   const location = useLocation();
 
   // Function to render navigation items based on the current page
@@ -169,7 +164,6 @@ function Navbar() {
     }
   };
 
->>>>>>> a1ee8ea58f73da5ebad4b7e09a29971a9ba965fc
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -190,67 +184,8 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-<<<<<<< HEAD
-            <li className="nav-item">
-              <Link to="/homepage" className="nav-link">
-                <Subt>Home</Subt>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/productslist" className="nav-link">
-                <Subt>Products</Subt>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/addproduct" className="nav-link">
-                <Subt>Add Product</Subt>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/cart" className="nav-link">
-                <Subt>Cart</Subt>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                <Subt>SignUp</Subt>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/aboutus" className="nav-link">
-                <Subt>AboutUs</Subt>
-              </Link>
-              </li>
-              <li>
-              <Link to="/login" className="nav-link">
-                <Subt>Login</Subt>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/adminlogin" className="nav-link">
-                <Subt>Admin</Subt>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <button
-                className="nav-link btn btn-danger text-black"
-                onClick={logout}
-              >
-                Sign out
-              </button>
-            </li>
-            {/* <li className="nav-item">
-              <button
-                className="nav-link btn btn-danger text-white"
-                onClick={logout}
-              >
-                Sign out
-              </button>
-            </li> */}
-=======
             {renderNavItems()}
             {/* Other common navigation items */}
->>>>>>> a1ee8ea58f73da5ebad4b7e09a29971a9ba965fc
           </ul>
         </div>
       </div>
