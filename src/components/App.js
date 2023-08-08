@@ -7,6 +7,7 @@ import EditProduct from './EditProduct';
 import ProductsList from './ProductsList';
 import SignUp from './SignUp';
 import Admin from './Admin';
+import AdminLogin from './AdminLogin';
 import NavBar from './NavBar';
 import AboutUs from './AboutUs';
 import Login from './Login'
@@ -54,6 +55,7 @@ function App() {
 
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Admin" element={<Admin />} />
+        <Route path="/Adminlogin" element={<AdminLogin />} />
         <Route path="/login" element={<Login />} />
         {/* Use the component prop without curly braces */}
         <Route path="/products/:id" element={<SingleProduct addToCart={addToCart}/>} />

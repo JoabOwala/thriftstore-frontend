@@ -18,7 +18,7 @@ const Subt =styled.h6`
 function Navbar() {
   const { current_user, logout } = useContext(AuthContext);
 
-  console.log("current user in navbar", current_user);
+  console.log(current_user, logout);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -77,13 +77,13 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/admin" className="nav-link">
+              <Link to="/adminlogin" className="nav-link">
                 <Subt>Admin</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <button
-                className="nav-link btn btn-danger text-white"
+                className="nav-link btn btn-danger text-black"
                 onClick={logout}
               >
                 Sign out
