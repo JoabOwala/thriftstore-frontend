@@ -5,6 +5,15 @@ import styled from 'styled-components';
 const Logo = styled.h2`
   color: #ffc800;
 `;
+const Subt =styled.h6`
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #ff6600; /* Change to the desired hover color */
+  }
+`;
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,42 +39,42 @@ function Navbar() {
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link to="/homepage" className="nav-link">
-                <b>Home</b>
+                <Subt>Home</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/productslist" className="nav-link">
-                <b>Products</b>
+                <Subt>Products</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/addproduct" className="nav-link">
-                <b>Add Product</b>
+                <Subt>Add Product</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/cart" className="nav-link">
-                <b>Cart</b>
+                <Subt>Cart</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/signup" className="nav-link">
-                <b>SignUp</b>
+                <Subt>SignUp</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/aboutus" className="nav-link">
-                <b>AboutUs</b>
+                <Subt>AboutUs</Subt>
               </Link>
               </li>
               <li>
               <Link to="/login" className="nav-link">
-                <b>Login</b>
+                <Subt>Login</Subt>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/admin" className="nav-link">
-                <b>Admin</b>
+                <Subt>Admin</Subt>
               </Link>
             </li>
             {/* <li className="nav-item">
