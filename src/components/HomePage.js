@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import background from "../images/background.png"
 
 
 const HomeSection = styled.section`
@@ -225,7 +226,7 @@ function HomePage({ addToCart }) {
           </div>
         </Content>
         <ImageContainer>
-          <StyledImage src="https://o.remove.bg/downloads/5d7fae5c-9a6a-412c-b3ec-7ba2910dd7aa/774-7744281_samsung-electronics-samsung-electronic-product-png-removebg-preview.png" alt="" />
+          <StyledImage src={background} alt="" />
         </ImageContainer>
       </HomeSection>
 
