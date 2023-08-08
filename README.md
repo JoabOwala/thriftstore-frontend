@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Thrift Store-Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Thrift Store Project is an E-Commerce store made with React and JS for the frontend and Ruby on Rails for the backend.The store helps to create a robust and user-friendly online marketplace where sellers can list their products and buyers can seamlessly browse, purchase, and track their orders. It also aims to provide a secure, engaging, and efficient platform for buying and selling a wide range of items.
 
-## Available Scripts
+# Preview Of Homepage
 
-In the project directory, you can run:
+<img src="https://.png" />
 
-### `npm start`
+# Preview Of Product Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="https://.png" />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Preview of Cart Page
 
-### `npm test`
+<img src="https://.png" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Preview of Sign up page
 
-### `npm run build`
+<img src="https://.png" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Start
+This project was bootstrapped with Create React App.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Usage
+NOTE: It is required to get the backend and follow those instructions as well. This application is currently only available to run locally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the project
 
-### `npm run eject`
+  git clone git@github.com:JoabOwala/thriftstore-frontend.git
+  
+Go to the project directory
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  cd thriftstore-frontend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install the required dependencies as per the Gemfile. This action might require administrator privileges
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Run the project
 
-## Learn More
+  npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+If everything runs smoothly, the web site should start up at http://localhost:4000. You will need to get the backend and follow the instructions there to get the server running.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/JoabOwala/thriftstore-frontend. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# License
+The app is available as open source under the terms of the MIT License.
