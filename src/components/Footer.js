@@ -121,14 +121,14 @@ const Footer = () => {
           <div className="container">
             <div className="row">
               <FooterContact className="col-lg-3 col-md-6">
-                <FooterContactHeading>Thrift Shop</FooterContactHeading>
+                <FooterContactHeading>ThriftStore</FooterContactHeading>
                 <FooterContactText>
                   Nairobi <br />
                   Africa <br />
                   Kenya <br />
                 </FooterContactText>
                 <strong>Phone:</strong> +254724567904 <br />
-                <strong>Email:</strong> thriftshop@gmail.com <br />
+                <strong>Email:</strong> thriftstore@gmail.com <br />
               </FooterContact>
 
               <FooterLinks className="col-lg-3 col-md-6">
@@ -190,10 +190,10 @@ const Footer = () => {
         <hr />
         <div className="container py-4">
           <Copyright>
-            &copy; Copyright <strong><span>ThriftShop Shop</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>ThriftStore</span></strong>. All Rights Reserved
           </Copyright>
           <Credits>
-            Designed by <a href="#">SA coding</a>
+            Designed by <a href="#">ThriftStore</a>
           </Credits>
         </div>
       </footer>

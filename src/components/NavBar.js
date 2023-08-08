@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
+const Logo = styled.h2`
+  color: #ffc800;
+`;
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <b>Thrift shop</b>
+          
+          <b><Logo id="logo">ThriftStore</Logo></b>
+          
         </Link>
 
         <button
@@ -21,43 +27,45 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto me-5">
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link to="/homepage" className="nav-link">
-                Homepage
+                <b>Home</b>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/productslist" className="nav-link">
-                Productlist
+                <b>Products</b>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/addproduct" className="nav-link">
-                Add Product
+                <b>Add Product</b>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/cart" className="nav-link">
-                Cart
+                <b>Cart</b>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/signup" className="nav-link">
-                Sign up
+                <b>SignUp</b>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/aboutus" className="nav-link">
-                About us
+                <b>AboutUs</b>
               </Link>
+              </li>
+              <li>
               <Link to="/login" className="nav-link">
-                Login
+                <b>Login</b>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/admin" className="nav-link">
-                Admin
+                <b>Admin</b>
               </Link>
             </li>
             {/* <li className="nav-item">

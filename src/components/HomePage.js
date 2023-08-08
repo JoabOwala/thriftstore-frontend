@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const HomeSection = styled.section`
-  width: 100%;
+  width: 86%;
   height: 80vh;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@ const HomeSection = styled.section`
   position: relative;
   background-color: #a9a9a92b;
   z-index: 0;
-  margin-left: 15px;
+  margin-left: 90px;
 
   @media screen and (max-width: 1200px) {
     height: 90vh;
