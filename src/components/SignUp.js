@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const MainContainer = styled.div`
   position: absolute;
   width: 100%;
-  height: 80vh; /* Set the container height to 80% of the viewport height */
+  height: 100vh; /* Set the container height to 80% of the viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
