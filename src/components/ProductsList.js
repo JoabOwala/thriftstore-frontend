@@ -5,7 +5,6 @@ function ProductsList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch product list from API
     async function fetchProductListings() {
       try {
         const response = await fetch('http://127.0.0.1:3001/listings');
@@ -35,36 +34,38 @@ function ProductsList() {
   };
 
   return (
-    <div className="ProductsList-nav">
-      <div className="container my-5">
-        <div className="col-md-8 mx-auto delete h-100">
+    <div className="ProductsList">
+      <div className="container">
+        <div className="row">
           {products.map((product) => (
             <div
               key={product.id}
-              className="card shadow px-3 py-5 mb-3"
-              style={{ width: "600px", backgroundColor: "#E8F9FD" }}
+              className="col-md-4 mb-4"
             >
-              <h2 className="card-title text-center">{product.product.title}</h2>
-              <img
-                src={`http://127.0.0.1:3001/${product.product.image}`}
-                alt={`Product ${product.id}`}
-                className="img-fluid"
-              />
-              <p>Product Price: ${product.product.price}</p>
-              <p>Product Quantity: {product.product.quantity}</p>
-              <p>Seller: {product.seller.username}</p>
-              <form>
-                <Link to={`/edit/${product.id}`} className="btn btn-primary mr-2">
-                  Edit
-                </Link>
-                <button
-                  className="btn btn-primary"
-                  type="button"
-                  onClick={() => handleDelete(product.id)}
-                >
-                  Delete
-                </button>
-              </form>
+              <div className="card shadow">
+                <h2 className="card-title text-center">{product.product.title}</h2>
+                <img
+                  src={`http://127.0.0.1:3001/${product.product.photo_url}`}
+                  alt={`Product ${product.id}`}
+                  className="card-img-top"
+                />
+                <div className="card-body">
+                  <p>Product Price: ${product.product.price}</p>
+                  <p>Product Quantity: {product.product.quantity}</p>
+                  <p>Seller: {product.seller.username}</p>
+                  <Link to={`/edit/${product.id}`} className="btn btn-primary mr-2">
+                    Edit
+                  </Link>
+                  {/* Hidden delete button */}
+                  <button
+                    className="btn btn-danger d-none"
+                    type="button"
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -74,3 +75,5 @@ function ProductsList() {
 }
 
 export default ProductsList;
+
+

@@ -6,7 +6,6 @@ function EditProduct() {
   const { id: productId } = useParams();
 
   const [product, setProduct] = useState({
-    
     name: '',
     description: '',
     image: '',
@@ -15,7 +14,7 @@ function EditProduct() {
   });
 
   useEffect(() => {
-    // Fetch product data from API
+    // Fetch product data from API and set initial values in the state
   }, [productId]);
 
   const handleChange = (e) => {
@@ -31,7 +30,7 @@ function EditProduct() {
     try {
       const response = await fetch(`/api/products/${productId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(product)
       });
 
@@ -45,76 +44,73 @@ function EditProduct() {
   }
 
   return (
-    <div className="addproduct-nav">
-            <div className="container my-5">
-                <div className="col-md-8 mx-auto delete h-100">
-                    <div className="card shadow px-3 py-5 styled-card">
-                        <h2 className="card-title text-center">Edit Product</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-row">
-                                <div className="input-data">
-                                    <input
-                                        type="text"
-                                        required
-                                        onChange={handleChange}
-                                    />
-                                    <div className="underline"></div>
-                                    <label htmlFor="name">Product Title</label>
-                                </div>
-                                <div className="input-data">
-                                    <input
-                                        type="text"
-                                        required
-
-                                        onChange={handleChange}
-                                    />
-                                    <div className="underline"></div>
-                                    <label htmlFor="description">Product Description</label>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="input-data">
-                                    <input
-                                        type="text"
-                                        required
-                                        onChange={handleChange}
-                                    />
-                                    <div className="underline"></div>
-                                    <label htmlFor="image">Image URL</label>
-                                </div>
-                                <div className="input-data">
-                                    <input
-                                        type="number"
-                                        required
-                                        onChange={handleChange}
-                                    />
-                                    <div className="underline"></div>
-                                    <label htmlFor="price">Product Price</label>
-                                </div>
-                                <div className="input-data">
-                                    <input
-                                        type="number"
-                                        required
-                                        onChange={handleChange}
-                                    />
-                                    <div className="underline"></div>
-                                    <label htmlFor="quantity">Product Quantity</label>
-                                </div>
-                            </div>
-                            <div className="form-row submit-btn">
-                                <div className="input-data">
-                                    <div className="inner"></div>
-                                    <input type="submit" value="Update"/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+    <div className="EditProduct">
+      <div className="container my-50">
+        <div className="col-md-8 mx-auto">
+          <div className="card shadow p-4">
+            <h2 className="card-title text-center mb-4">Edit Product</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Product Title</label>
+                <input
+                  type="text"
+                  id="name"
+                  className="form-control"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Product Description</label>
+                <input
+                  type="text"
+                  id="description"
+                  className="form-control"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="image">Image URL</label>
+                <input
+                  type="text"
+                  id="image"
+                  className="form-control"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-row">
+                <div className="form-group col-md-6">
+                  <label htmlFor="price">Product Price</label>
+                  <input
+                    type="number"
+                    id="price"
+                    className="form-control"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
-            </div>
+                <div className="form-group col-md-6">
+                  <label htmlFor="quantity">Product Quantity</label>
+                  <input
+                    type="number"
+                    id="quantity"
+                    className="form-control"
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Update
+              </button>
+            </form>
+          </div>
         </div>
-    
+      </div>
+    </div>
   );
-};
-
+}
 
 export default EditProduct;
