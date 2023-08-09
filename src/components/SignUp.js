@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2"
+import { Link } from "react-router-dom";
+
 
 const MainContainer = styled.div`
   position: absolute;
   width: 100%;
-  height: 80vh; /* Set the container height to 80% of the viewport height */
+  height: 100vh; /* Set the container height to 80% of the viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,6 +110,9 @@ function SignUp() {
     email: "",
     password: "",
   });
+  const [userType, setUserType] = useState(""); // Set the default user type to "buyer"
+  const [buyerLocation, setBuyerLocation] = useState("");
+  const [buyerContact, setBuyerContact] = useState("");
   
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -115,21 +120,65 @@ function SignUp() {
       ...formData,
       [name]: value,
     });
+    if (name === "buyerLocation") {
+      setBuyerLocation(value);
+    } else if (name === "buyerContact") {
+      setBuyerContact(value);
+    }
   };
     // Function to handle form submission
+    // const handleSubmit = async (event) => {
+    //   event.preventDefault();
+    //   try {
+    //     const response = await fetch("http://127.0.0.1:3001/buyers", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(formData),
+    //     });
+        
+    //     const data = await response.json();
+    //     console.log("", data);
+    
+    //     // Show SweetAlert success popup
+    //     Swal.fire({
+    //       icon: "success",
+    //       title: "Sign Up Successful",
+    //       text: "You have signed up successfully!",
+    //     });
+    //   } catch (error) {
+    //     console.error("Error creating buyer:", error);
+    
+    //     // Show SweetAlert error popup
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Sign Up Failed",
+    //       text: "An error occurred during signup.",
+    //     });
+    //   }
+    // };
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const response = await fetch("http://127.0.0.1:3000/buyers", {
+        let endpoint = "";
+        if (userType === "buyer") {
+          endpoint = "http://127.0.0.1:3001/buyers";
+        } else if (userType === "seller") {
+          endpoint = "http://127.0.0.1:3001/sellers";
+        }
+  
+        const response = await fetch(endpoint, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
+  
         const data = await response.json();
-        console.log("New buyer created:", data);
-    
+        console.log("New user created:", data);
+  
         // Show SweetAlert success popup
         Swal.fire({
           icon: "success",
@@ -137,8 +186,8 @@ function SignUp() {
           text: "You have signed up successfully!",
         });
       } catch (error) {
-        console.error("Error creating buyer:", error);
-    
+        console.error("Error creating user:", error);
+  
         // Show SweetAlert error popup
         Swal.fire({
           icon: "error",
@@ -150,65 +199,121 @@ function SignUp() {
   return (
     <MainContainer>
       <Container className="myCard">
-      <MyLeftCtn>
-      <form className="myForm text-center" onSubmit={handleSubmit}>
-        <Header>Create Account</Header>
-        <div className="form-group">
-          <i className="fas fa-user"></i>
-          <MyInput
-            type="text"
-            placeholder="Username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <MyLeftCtn>
+          <form className="myForm text-center" onSubmit={handleSubmit}>
+            <Header>Create Account</Header>
+            <div className="form-group">
+              <i className="fas fa-user"></i>
+              <MyInput
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div className="form-group">
-          <i className="fas fa-envelope"></i>
-          <MyInput
-            placeholder="Email"
-            type="text"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+            <div className="form-group">
+              <i className="fas fa-envelope"></i>
+              <MyInput
+                placeholder="Email"
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div className="form-group">
-          <i className="fas fa-lock"></i>
-          <MyInput
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+            <div className="form-group">
+              <i className="fas fa-lock"></i>
+              <MyInput
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div className="form-group">
-          <label>
-            <input
-              id="check_1"
-              name="check_1"
-              type="checkbox"
-              required
-            />
-            <small>I read and agree to Terms & Conditions</small>
-            <div className="invalid-feedback">You must check the box.</div>
-          </label>
-        </div>
+            {/* Conditionally render buyer-specific fields if userType is "buyer" */}
+            {userType === "buyer" && (
+              <>
+                <div className="form-group">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <MyInput
+                    type="text"
+                    name="buyerLocation"
+                    placeholder="Buyer Location"
+                    value={buyerLocation}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-        <Button
-          type="submit"
-          className="button"
-          value="CREATE ACCOUNT"
-        />
-      </form>
-    </MyLeftCtn>
+                <div className="form-group">
+                  <i className="fas fa-phone-alt"></i>
+                  <MyInput
+                    type="text"
+                    name="buyerContact"
+                    placeholder="Buyer Contact"
+                    value={buyerContact}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </>
+            )}
+
+            <div className="form-group">
+              <label>
+                <input
+                  type="radio"
+                  name="userType"
+                  value="buyer"
+                  required
+                  checked={userType === "buyer"}
+                  onChange={() => setUserType("buyer")}
+                />
+                <span>Buyer</span>
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                <input
+                  type="radio"
+                  name="userType"
+                  value="seller"
+                  required
+                  checked={userType === "seller"}
+                  onChange={() => setUserType("seller")}
+                />
+                <span>Seller</span>
+              </label>
+            </div>
+            
+
+            <div className="form-group">
+              <label>
+                <input
+                  id="check_1"
+                  name="check_1"
+                  type="checkbox"
+                  required
+                />
+                <small>I read and agree to Terms & Conditions</small>
+                <div className="invalid-feedback">You must check the box.</div>
+              </label>
+            </div>
+
+            <Button type="submit" className="button" value="CREATE ACCOUNT" />
+            <div className="row">
+                    <small>Already have an account? <Link to="/login">Log in</Link></small>
+                    </div> 
+          </form>
+        </MyLeftCtn>  
         <MyRightCtn>
           <div className="box">
             <Header>ThriftShop, Welcomes You</Header>

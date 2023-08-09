@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {AuthContext} from './AuthContext';
 
 function Login() {
+  const {login} = useContext(AuthContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState("");
+  const nav = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:3000/auth/buyer/login", {
+      const response = await fetch(`http://127.0.0.1:3001/auth/${userType}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,18 +21,24 @@ function Login() {
         body: JSON.stringify({ email, password }),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        const data = await response.json();
+        const userTypeLabel = userType.charAt(0).toUpperCase() + userType.slice(1);
+
+        // Show SweetAlert with the logged-in user details
+        Swal.fire({
+          icon: "success",
+          title: `${userTypeLabel} Login Successful`,
+          text: "You have logged in successfully!",
+          html: `<p>Welcome, ${data[userType].username}!</p><p>Email: ${data[userType].email}</p>`,
+        });
+
+        // Navigate to the homepage after successful login
+        nav('/homepage');
+      } else {
+        // Handle login error for non-200 status codes
         throw new Error("Login failed");
       }
-
-      const data = await response.json();
-      // Show SweetAlert with the logged-in buyer details
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful",
-        text: "You have logged in successfully!",
-        html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
-      });
     } catch (error) {
       // Handle login error
       console.error(error);
@@ -80,6 +90,29 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              <div className="form-check mb-3">
+               <input
+                 type="radio"
+                 className="form-check-input"
+                 name="userType"
+                 value="buyer"
+                 checked
+                  // The "checked" attribute above means the default selected value is "buyer"
+                 onChange={() => {}}
+                />
+               <label className="form-check-label">Buyer</label>
+                            </div>
+              <div className="form-check mb-3">
+                <input
+                  type="radio"
+                  className="form-check-input"
+                                name="userType"
+                  value="seller"
+                  onChange={() => {}}
+                />
+                <label className="form-check-label">Seller</label>
+              </div>
+              
               <div className="input-group mb-5 d-flex justify-content-between">
                 <div className="form-check">
                   <input type="checkbox" className="form-check-input" id="formCheck" />
@@ -95,7 +128,10 @@ function Login() {
               </div>
               <div className="input-group mb-3">
                 <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">
+                <Link to="/homepage">
                   Login
+                  </Link>
+                  
                 </button>
               </div>
               <div className="input-group mb-3">
@@ -105,7 +141,7 @@ function Login() {
                 </button>
               </div>
              <div className="row">
-                    <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>
+                    <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>      
             </div>
             </form>
           </div>

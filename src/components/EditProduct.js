@@ -1,8 +1,9 @@
-// EditProduct.js
-
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import './Product.css';
 
-function EditProduct({ productId }) {
+function EditProduct() {
+  const { id: productId } = useParams();
 
   const [product, setProduct] = useState({
     
@@ -44,79 +45,73 @@ function EditProduct({ productId }) {
   }
 
   return (
-    <div className="editproduct-nav">
-         
-      <div className="container my-5">
-        <div className="col-md-8 mx-auto delete h-100">
-          <div
-            className="card shadow px-3 py-5"
-            style={{ width: "600px", backgroundColor: "#E8F9FD" }}
-          >
-            <h2 className="card-title text-center">Edit Product</h2>
-            <form onSubmit={handleSubmit}>
-              {/* <label htmlFor="id">ID:</label>
-              <input
-                className="form-control"
-                type="text"
-                id="id"
-                placeholder="Product ID"
-                value={productId}
-                onChange={handleChange}
-              /> */}
-              <label htmlFor="id">Title:</label>
-              <input
-                className="form-control"
-                type="text"
-                id="name"
-                placeholder="Product Title"
-                value={product.name}
-                onChange={handleChange}
-              />
-              <label htmlFor="id">Description:</label>
-              <input
-                className="form-control"
-                type="text"
-                id="description"
-                placeholder="description"
-                value={product.description}
-                onChange={handleChange}
-              />
-              <label htmlFor="id">Image:</label>
-              <input
-                className="form-control"
-                type="text"
-                id="image"
-                placeholder="phot_url"
-                value={product.image}
-                onChange={handleChange}
-              />
-              <label htmlFor="id">Price:</label>
-              <input
-                className="form-control"
-                type="integer"
-                id="price"
-                placeholder="value"
-                value={product.price}
-                onChange={handleChange}
-              />
-              <label htmlFor="id">Quantity:</label>
-              <input
-                className="form-control"
-                type="integer"
-                id="quantity"
-                placeholder="value"
-                value={product.quantity}
-                onChange={handleChange}
-              />
+    <div className="addproduct-nav">
+            <div className="container my-5">
+                <div className="col-md-8 mx-auto delete h-100">
+                    <div className="card shadow px-3 py-5 styled-card">
+                        <h2 className="card-title text-center">Edit Product</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-row">
+                                <div className="input-data">
+                                    <input
+                                        type="text"
+                                        required
+                                        onChange={handleChange}
+                                    />
+                                    <div className="underline"></div>
+                                    <label htmlFor="name">Product Title</label>
+                                </div>
+                                <div className="input-data">
+                                    <input
+                                        type="text"
+                                        required
 
-              <button className="btn btn-primary" type="submit">
-                Update
-              </button>
-            </form>
-          </div>
+                                        onChange={handleChange}
+                                    />
+                                    <div className="underline"></div>
+                                    <label htmlFor="description">Product Description</label>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="input-data">
+                                    <input
+                                        type="text"
+                                        required
+                                        onChange={handleChange}
+                                    />
+                                    <div className="underline"></div>
+                                    <label htmlFor="image">Image URL</label>
+                                </div>
+                                <div className="input-data">
+                                    <input
+                                        type="number"
+                                        required
+                                        onChange={handleChange}
+                                    />
+                                    <div className="underline"></div>
+                                    <label htmlFor="price">Product Price</label>
+                                </div>
+                                <div className="input-data">
+                                    <input
+                                        type="number"
+                                        required
+                                        onChange={handleChange}
+                                    />
+                                    <div className="underline"></div>
+                                    <label htmlFor="quantity">Product Quantity</label>
+                                </div>
+                            </div>
+                            <div className="form-row submit-btn">
+                                <div className="input-data">
+                                    <div className="inner"></div>
+                                    <input type="submit" value="Update"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
     
   );
 };
