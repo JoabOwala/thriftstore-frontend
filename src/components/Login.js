@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
-import {AuthContext} from './AuthContext';
+import { AuthContext } from './AuthContext';
 
 function Login() {
-  const {login} = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState("");
+  const [userType, setUserType] = useState("buyer"); // Default user type is "buyer"
   const nav = useNavigate();
 
   const handleLogin = async (e) => {
@@ -53,6 +53,7 @@ function Login() {
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
       <div className="row border rounded-5 p-3 bg-white shadow box-area">
+        {/* Left Box */}
         <div className="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style={{ background: "#103cbe" }}>
           <div className="featured-image mb-3">
             <img src="images/1.png" className="img-fluid" style={{ width: "250px" }} alt="Logo" />
@@ -64,14 +65,18 @@ function Login() {
             Welcome to Our ThriftShop platform.
           </small>
         </div>
-
+  
+        {/* Right Box */}
         <div className="col-md-6 right-box">
           <div className="row align-items-center">
             <div className="header-text mb-4">
               <h2>Hello, Again</h2>
               <p>We are happy to have you back.</p>
             </div>
+  
+            {/* Login Form */}
             <form onSubmit={handleLogin}>
+              {/* Email Input */}
               <div className="input-group mb-3">
                 <input
                   type="text"
@@ -81,6 +86,8 @@ function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
+  
+              {/* Password Input */}
               <div className="input-group mb-1">
                 <input
                   type="password"
@@ -90,29 +97,32 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="form-check mb-3">
-               <input
-                 type="radio"
-                 className="form-check-input"
-                 name="userType"
-                 value="buyer"
-                 checked
-                  // The "checked" attribute above means the default selected value is "buyer"
-                 onChange={() => {}}
-                />
-               <label className="form-check-label">Buyer</label>
-                            </div>
+  
+              {/* User Type Selection */}
               <div className="form-check mb-3">
                 <input
                   type="radio"
                   className="form-check-input"
-                                name="userType"
+                  name="userType"
+                  value="buyer"
+                  checked={userType === "buyer"}
+                  onChange={() => setUserType("buyer")}
+                />
+                <label className="form-check-label">Buyer</label>
+              </div>
+              <div className="form-check mb-3">
+                <input
+                  type="radio"
+                  className="form-check-input"
+                  name="userType"
                   value="seller"
-                  onChange={() => {}}
+                  checked={userType === "seller"}
+                  onChange={() => setUserType("seller")}
                 />
                 <label className="form-check-label">Seller</label>
               </div>
-              
+  
+              {/* Remember Me and Forgot Password */}
               <div className="input-group mb-5 d-flex justify-content-between">
                 <div className="form-check">
                   <input type="checkbox" className="form-check-input" id="formCheck" />
@@ -126,23 +136,26 @@ function Login() {
                   </small>
                 </div>
               </div>
+  
+              {/* Login Button */}
               <div className="input-group mb-3">
                 <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">
-                <Link to="/homepage">
-                  Login
-                  </Link>
-                  
+                  <Link to="/homepage">Login</Link>
                 </button>
               </div>
+  
+              {/* Sign In with Google Button */}
               <div className="input-group mb-3">
                 <button className="btn btn-lg btn-light w-100 fs-6">
                   <img src="images/google.png" style={{ width: "20px" }} className="me-2" alt="Google" />
                   <small>Sign In with Google</small>
                 </button>
               </div>
-             <div className="row">
-                    <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>      
-            </div>
+  
+              {/* Sign Up Link */}
+              <div className="row">
+                <small>Don't have an account? <Link to="/signup">Sign Up</Link></small>
+              </div>
             </form>
           </div>
         </div>
@@ -150,5 +163,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;
