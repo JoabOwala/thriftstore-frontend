@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Thrift Store-Frontend
 
 Thrift Store Project is an E-Commerce store made with React and JS for the frontend and Ruby on Rails for the backend.The store helps to create a robust and user-friendly online marketplace where sellers can list their products and buyers can seamlessly browse, purchase, and track their orders. It also aims to provide a secure, engaging, and efficient platform for buying and selling a wide range of items.
@@ -42,3 +43,5 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/JoabOw
 
 # License
 The app is available as open source under the terms of the MIT License.
+=======
+>>>>>>> development
