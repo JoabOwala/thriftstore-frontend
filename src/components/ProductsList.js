@@ -46,7 +46,7 @@ function ProductsList() {
             >
               <h2 className="card-title text-center">{product.product.title}</h2>
               <img
-                src={`http://127.0.0.1:3001/${product.product.image}`}
+                src={`${product.product.photo_url}`}
                 alt={`Product ${product.id}`}
                 className="img-fluid"
               />
