@@ -8,7 +8,7 @@ Thrift Store Project is an E-Commerce store made with React and JS for the front
 
 # Preview Of Product Page
 
-<img src="https://.png" />
+![WhatsApp Image 2023-08-09 at 4 25 43 AM](https://github.com/JoabOwala/thriftstore-frontend/assets/126834027/8ab37241-cffe-4837-a190-63db4304e916)
 
 # Preview of Cart Page
 
