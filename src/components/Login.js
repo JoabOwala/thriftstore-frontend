@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
+import {AuthContext} from './AuthContext';
 
 function Login() {
+  const {login} = useContext(AuthContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState("buyer");
+  const [userType, setUserType] = useState("");
   const nav = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:3001/auth/buyer/login", {
+      const response = await fetch(`http://127.0.0.1:3001/auth/${userType}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,12 +23,14 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        // Show SweetAlert with the logged-in buyer details
+        const userTypeLabel = userType.charAt(0).toUpperCase() + userType.slice(1);
+
+        // Show SweetAlert with the logged-in user details
         Swal.fire({
           icon: "success",
-          title: "Login Successful",
+          title: `${userTypeLabel} Login Successful`,
           text: "You have logged in successfully!",
-          html: `<p>Welcome, ${data.buyer.username}!</p><p>Email: ${data.buyer.email}</p>`,
+          html: `<p>Welcome, ${data[userType].username}!</p><p>Email: ${data[userType].email}</p>`,
         });
 
         // Navigate to the homepage after successful login
@@ -45,8 +49,6 @@ function Login() {
       });
     }
   };
-
-  // Get the history object using the useHistory hook
 
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
