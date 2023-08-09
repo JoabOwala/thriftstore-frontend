@@ -138,11 +138,11 @@ function Navbar() {
               <Subt>Products</Subt>
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
               <Link to="/addproduct" className="nav-link">
                 <Subt>Add Product</Subt>
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link to="/cart" className="nav-link">
                 <Subt>Cart</Subt>
@@ -154,7 +154,7 @@ function Navbar() {
               </Link>
               </li>
               <li>
-              <Link to="/logout" className="nav-link">
+              <Link to="/" className="nav-link">
                 <Subt>LogOut</Subt>
               </Link>
             </li>
