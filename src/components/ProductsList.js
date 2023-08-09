@@ -5,59 +5,33 @@ function ProductsList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch product list from API or simulate
-    const simulatedProducts = [
-      {
-        id: 1,
-        name: 'Product 1',
-        description: 'Description 1',
-        image: 'image1.jpg',
-        price: '10.00',
-        quantity: 5,
-      },
-      {
-        id: 2,
-        name: 'Product 2',
-        description: 'Description 2',
-        image: 'image2.jpg',
-        price: '20.00',
-        quantity: 8,
-      },
-      {
-        id: 3,
-        name: 'Product 3',
-        description: 'Description 3',
-        image: 'image3.jpg',
-        price: '15.00',
-        quantity: 12,
-      },
-      {
-        id: 4,
-        name: 'Product 4',
-        description: 'Description 4',
-        image: 'image4.jpg',
-        price: '25.00',
-        quantity: 3,
-      },
-      {
-        id: 5,
-        name: 'Product 5',
-        description: 'Description 5',
-        image: 'image5.jpg',
-        price: '18.00',
-        quantity: 7,
-      },
-    ];
+    // Fetch product list from API
+    async function fetchProductListings() {
+      try {
+        const response = await fetch('http://127.0.0.1:3001/listings');
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching product listings:', error);
+      }
+    }
 
-    setProducts(simulatedProducts);
+    fetchProductListings();
   }, []);
 
-  const handleEdit = (productId) => {
-    // Handle edit logic
-  };
+  const handleDelete = async (productId) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:3001/listings/${productId}`, {
+        method: 'DELETE'
+      });
 
-  const handleDelete = (productId) => {
-    // Handle delete logic
+      if (response.ok) {
+        // Remove the deleted product from the products list
+        setProducts(products.filter(product => product.id !== productId));
+      }
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
   };
 
   return (
@@ -70,21 +44,19 @@ function ProductsList() {
               className="card shadow px-3 py-5 mb-3"
               style={{ width: "600px", backgroundColor: "#E8F9FD" }}
             >
-              <h2 className="card-title text-center">Product List</h2>
+              <h2 className="card-title text-center">{product.product.title}</h2>
+              <img
+                src={`http://127.0.0.1:3001/${product.product.image}`}
+                alt={`Product ${product.id}`}
+                className="img-fluid"
+              />
+              <p>Product Price: ${product.product.price}</p>
+              <p>Product Quantity: {product.product.quantity}</p>
+              <p>Seller: {product.seller.username}</p>
               <form>
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder={`Product ${product.id}`}
-                  value={product.name}
-                  readOnly
-                />
-                {/* Add other input fields here */}
-                <button> 
                 <Link to={`/edit/${product.id}`} className="btn btn-primary mr-2">
-                Edit
-              </Link>
-              </button>
+                  Edit
+                </Link>
                 <button
                   className="btn btn-primary"
                   type="button"
