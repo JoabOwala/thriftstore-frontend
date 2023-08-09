@@ -201,9 +201,9 @@ function HomePage({ addToCart }) {
             Up To <span id="span2">50%</span> Off
           </H1>
           <P>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, saepe.
-            <br />
-            Lorem ipsum dolor sit amet consectetur.
+            ThriftStore platform offers a modern twist on the classic thrift store experience, 
+            combining the convenience of online shopping with the excitement of discovering unique 
+            and pre-loved treasures.
           </P>
           <div className="btn">
             <Button>Shop Now</Button>

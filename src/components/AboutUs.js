@@ -3,7 +3,9 @@ import React from "react"
 
 function AboutUs(){
     return (
-        <div className="card mb-3" style={{maxWidth: '1830px', backgroundColor: "#E8F9FD"}}>
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+
+        <div className="card mb-3 " style={{maxWidth: '1100px', backgroundColor: "#E8F9FD"}}>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
@@ -58,6 +60,7 @@ function AboutUs(){
 </div>
             </div>
         </div>
+                    </div>
     )
         
 }

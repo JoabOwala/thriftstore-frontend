@@ -115,11 +115,11 @@ function Navbar() {
         <React.Fragment>
           {/* Render specific navigation items for the products list page */}
           {/* Example: */}
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/homepage" className="nav-link">
                 <Subt>Home</Subt>
               </Link>
-            </li>
+            </li> */}
           
         </React.Fragment>
       );

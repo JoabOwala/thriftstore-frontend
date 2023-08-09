@@ -318,9 +318,10 @@ function SignUp() {
           <div className="box">
             <Header>ThriftShop, Welcomes You</Header>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
+              ThriftStore platform offers a modern twist on the classic thrift store experience, 
+              combining the convenience of online shopping with the excitement of discovering unique 
+              and pre-loved treasures. On such a platform, shoppers can browse a diverse selection 
+              of items spanning from vintage clothing to retro furniture, all from the comfort of their homes. 
             </p>
             <ButtOut type="button" value="Learn More" />
           </div>
