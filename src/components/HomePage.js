@@ -165,23 +165,7 @@ const ProductCardPrice = styled.h2`
     cursor: pointer;
   }
 `;
-const ProductsHeadingContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-bottom: 20px;
-`;
-const ProductsHeading = styled.h1`
-  font-size: 28px;
-  color: #333;
-  padding: 0 20px;
-  background-color: #fff;
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-`;
+
 
 
 function HomePage({ addToCart }) {
@@ -244,10 +228,7 @@ function HomePage({ addToCart }) {
                 <ProductCardHeading className="text-center">{product.title}</ProductCardHeading>
                 <ProductCardText className="text-center">{product.description}</ProductCardText>
                 <ProductCardStars className="star text-center">
-                  {/* Display star icons here */}
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <i key={index} className={`fa-solid fa-star ${index < product.rating ? "checked" : ""}`} />
-                  ))}
+              
                 </ProductCardStars>
                 <ProductCardPrice>
                   ${product.price} {""}

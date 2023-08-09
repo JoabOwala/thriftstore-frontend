@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from 'styled-components';
+import { AuthContext } from "./AuthContext";
 
 const Logo = styled.h2`
   color: #ffc800;
