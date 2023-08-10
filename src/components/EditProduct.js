@@ -13,9 +13,19 @@ function EditProduct() {
   });
 
   useEffect(() => {
-    // Fetch product data from API and update 'product' state
-    // Example API call: fetch(`/api/products/${productId}`)
+    async function fetchProductData() {
+      try {
+        const response = await fetch(`http://127.0.0.1:3001/products/${productId}`);
+        const data = await response.json();
+        setProduct(data); // Assuming the API response matches the product structure
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    }
+  
+    fetchProductData();
   }, [productId]);
+  
 
   const handleChange = (e) => {
     setProduct({
@@ -26,23 +36,30 @@ function EditProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    const updatedProduct = {
+      title: product.name,
+      description: product.description,
+      photo_url: product.photo_url,
+      price: parseFloat(product.price),
+      quantity: parseInt(product.quantity)
+    };
+  
     try {
-    
-    const response = await fetch(`http://127.0.0.1:3001/products/${productId}`, {
+      const response = await fetch(`http://127.0.0.1:3001/products/${productId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(product)
+        body: JSON.stringify(updatedProduct)
       });
-
+  
       if (response.ok) {
         console.log('Product updated successfully!');
       }
-
     } catch (error) {
       console.log(error);
     }
   }
+  
 
   return (
     <section className="vh-70">
@@ -64,7 +81,7 @@ function EditProduct() {
                             type="text"
                             id="form3Example1c"
                             className="form-control"
-                            name="name"
+                            name="title"
                             value={product.title}
                             onChange={handleChange}
                           />
@@ -78,7 +95,7 @@ function EditProduct() {
                             type="text"
                             id="form3Example1c"
                             className="form-control"
-                            name="name"
+                            name="description"
                             value={product.description}
                             onChange={handleChange}
                           />
@@ -93,7 +110,7 @@ function EditProduct() {
                             type="text"
                             id="form3Example1c"
                             className="form-control"
-                            name="name"
+                            name="photo_url"
                             value={product.photo_url}
                             onChange={handleChange}
                           />
@@ -108,7 +125,7 @@ function EditProduct() {
                             type="text"
                             id="form3Example1c"
                             className="form-control"
-                            name="name"
+                            name="price"
                             value={product.price}
                             onChange={handleChange}
                           />
@@ -116,14 +133,14 @@ function EditProduct() {
                         </div>
                       </div>
 
-                      <div className="d-flex flex-row align-items-center mb-4">
+                      <div className="form-outline flex-fill mb-0 extended-input">
                        
                         <div className="form-outline flex-fill mb-0">
                           <input
                             type="text"
                             id="form3Example1c"
                             className="form-control"
-                            name="name"
+                            name="quantity"
                             value={product.quantity}
                             onChange={handleChange}
                           />
@@ -134,18 +151,20 @@ function EditProduct() {
                       {/* More form input fields */}
                       {/* ... */}
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="button" className="btn btn-primary btn-lg" onClick={handleSubmit}>
+                      <button type="submit" className="btn btn-primary btn-lg" onClick={handleSubmit}>
                           Save
                         </button>
+
                       </div>
                     </form>
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                    <img
-                      src={product.photo_url}
-                      className="img-fluid"
-                      alt="Sample"
-                    />
+                  <img
+                    src={product.photo_url}
+                    className="img-fluid"
+                    alt="Sample"
+                    style={{ maxWidth: '100%' }}
+                  />
                   </div>
                 </div>
               </div>
