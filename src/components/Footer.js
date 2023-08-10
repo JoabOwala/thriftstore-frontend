@@ -128,7 +128,13 @@ const Footer = () => {
                   Kenya <br />
                 </FooterContactText>
                 <strong>Phone:</strong> +254724567904 <br />
-                <strong>Email:</strong> thriftstore@gmail.com <br />
+                <strong>Phone:</strong> +254708636727 <br />
+                <strong>Phone:</strong> +254705552893 <br />
+                <strong>Phone:</strong> +254737311983 <br />
+                <strong>Phone:</strong> +254700779993 <br />
+                
+
+                
               </FooterContact>
 
               <FooterLinks className="col-lg-3 col-md-6">
