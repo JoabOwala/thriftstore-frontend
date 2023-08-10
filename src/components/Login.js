@@ -127,10 +127,11 @@ function Login() {
                 </div>
               </div>
               <div className="input-group mb-3">
-                <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">
+                <button type="submit" className="btn btn-lg btn-primary text-white w-100 fs-6">
                 <Link to="/homepage">
                   Login
-                  </Link>
+                </Link>
+                
                   
                 </button>
               </div>
