@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './Product.css';
+
 
 function EditProduct() {
   const { id: productId } = useParams();

@@ -62,7 +62,6 @@ function App() {
         <Route path="/ProductsList" element={<ProductsList />} />
         <Route path="/AddProduct" element={<AddProduct />} />
         <Route path="/edit/:id" element={<EditProduct />} />
-        <Route path="/Cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route
           path="/Cart"
           element={<Cart cartItems={cartItems} setCartItems={setCartItems} removeFromCart={removeFromCart} />}
