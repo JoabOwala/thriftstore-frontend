@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -27,9 +28,13 @@ function ProductsList() {
       if (response.ok) {
         // Remove the deleted product from the products list
         setProducts(products.filter(product => product.id !== productId));
+        Swal.fire('Deleted!', 'Product has been deleted.', 'success');
+      } else {
+        Swal.fire('Error!', 'Failed to delete the product.', 'error');
       }
     } catch (error) {
       console.error('Error deleting product:', error);
+      Swal.fire('Error!', 'An error occurred while deleting the product.', 'error');
     }
   };
 
@@ -42,30 +47,29 @@ function ProductsList() {
               key={product.id}
               className="col-md-4 mb-4"
             >
-              <div className="card shadow">
-                <h2 className="card-title text-center">{product.product.title}</h2>
-                <img
-                  src={`http://127.0.0.1:3001/${product.product.photo_url}`}
-                  alt={`Product ${product.id}`}
-                  className="card-img-top"
-                />
-                <div className="card-body">
-                  <p>Product Price: ${product.product.price}</p>
-                  <p>Product Quantity: {product.product.quantity}</p>
-                  <p>Seller: {product.seller.username}</p>
-                  <Link to={`/edit/${product.id}`} className="btn btn-primary mr-2">
-                    Edit
-                  </Link>
-                  {/* Hidden delete button */}
-                  <button
-                    className="btn btn-danger d-none"
-                    type="button"
-                    onClick={() => handleDelete(product.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
+              <h2 className="card-title text-center">{product.product.title}</h2>
+              <img
+                src={`${product.product.photo_url}`}
+                alt={`Product ${product.id}`}
+                className="img-fluid"
+              />
+              <p>Product Price: ${product.product.price}</p>
+              <p>Product Quantity: {product.product.quantity}</p>
+              <p>Seller: {product.seller.username}</p>
+              <form>
+                <Link to={`/edit/${product.id}`} className="btn btn-primary mr-2">
+                  Edit
+                </Link>
+                <br />
+                <br />
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={() => handleDelete(product.id)}
+                >
+                  Delete
+                </button>
+              </form>
             </div>
           ))}
         </div>
@@ -75,5 +79,6 @@ function ProductsList() {
 }
 
 export default ProductsList;
+
 
 
