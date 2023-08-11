@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function EditProduct() {
   const { id: productId } = useParams();
 
   const [product, setProduct] = useState({
-    name: '',
+    title: '',
     description: '',
-    image: '',
+    photo_url: '',
     price: '',
     quantity: ''
   });
@@ -38,7 +39,7 @@ function EditProduct() {
     e.preventDefault();
   
     const updatedProduct = {
-      title: product.name,
+      title: product.title,
       description: product.description,
       photo_url: product.photo_url,
       price: parseFloat(product.price),
@@ -53,13 +54,15 @@ function EditProduct() {
       });
   
       if (response.ok) {
-        console.log('Product updated successfully!');
+        Swal.fire('Success!', 'Product updated successfully.', 'success');
+      } else {
+        Swal.fire('Error!', 'Failed to update the product.', 'error');
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      Swal.fire('Error!', 'An error occurred while updating the product.', 'error');
     }
   }
-  
 
   return (
     <section className="vh-70">
@@ -72,10 +75,7 @@ function EditProduct() {
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Edit Product </p>
                     <form className="mx-1 mx-md-4">
-                      {/* Form input fields */}
-                      {/* Example: */}
                       <div className="d-flex flex-row align-items-center mb-4">
-                        
                         <div className="form-outline flex-fill mb-0">
                           <input
                             type="text"
@@ -89,7 +89,6 @@ function EditProduct() {
                         </div>
                       </div>
                       <div className="d-flex flex-row align-items-center mb-4">
-                      
                         <div className="form-outline flex-fill mb-0">
                           <input
                             type="text"
@@ -102,9 +101,7 @@ function EditProduct() {
                           <label className="form-label" htmlFor="form3Example1c">Product Description</label>
                         </div>
                       </div>
-
                       <div className="d-flex flex-row align-items-center mb-4">
-                        
                         <div className="form-outline flex-fill mb-0">
                           <input
                             type="text"
@@ -114,12 +111,10 @@ function EditProduct() {
                             value={product.photo_url}
                             onChange={handleChange}
                           />
-                          <label className="form-label" htmlFor="form3Example1c">photo_url</label>
+                          <label className="form-label" htmlFor="form3Example1c">Photo URL</label>
                         </div>
                       </div>
-
                       <div className="d-flex flex-row align-items-center mb-4">
-                      
                         <div className="form-outline flex-fill mb-0">
                           <input
                             type="text"
@@ -129,12 +124,10 @@ function EditProduct() {
                             value={product.price}
                             onChange={handleChange}
                           />
-                          <label className="form-label" htmlFor="form3Example1c">price</label>
+                          <label className="form-label" htmlFor="form3Example1c">Price</label>
                         </div>
                       </div>
-
                       <div className="form-outline flex-fill mb-0 extended-input">
-                       
                         <div className="form-outline flex-fill mb-0">
                           <input
                             type="text"
@@ -144,27 +137,23 @@ function EditProduct() {
                             value={product.quantity}
                             onChange={handleChange}
                           />
-                          <label className="form-label" htmlFor="form3Example1c">quantity</label>
+                          <label className="form-label" htmlFor="form3Example1c">Quantity</label>
                         </div>
                       </div>
-
-                      {/* More form input fields */}
-                      {/* ... */}
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="submit" className="btn btn-primary btn-lg" onClick={handleSubmit}>
+                        <button type="submit" className="btn btn-primary btn-lg" onClick={handleSubmit}>
                           Save
                         </button>
-
                       </div>
                     </form>
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                  <img
-                    src={product.photo_url}
-                    className="img-fluid"
-                    alt="Sample"
-                    style={{ maxWidth: '100%' }}
-                  />
+                    <img
+                      src={product.photo_url}
+                      className="img-fluid"
+                      alt="Sample"
+                      style={{ maxWidth: '100%' }}
+                    />
                   </div>
                 </div>
               </div>
@@ -177,3 +166,4 @@ function EditProduct() {
 }
 
 export default EditProduct;
+

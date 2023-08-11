@@ -139,8 +139,12 @@ function Login() {
   
               {/* Login Button */}
               <div className="input-group mb-3">
-                <button type="submit" className="btn btn-lg btn-primary w-100 fs-6">
-                  <Link to="/homepage">Login</Link>
+                <button type="submit" className="btn btn-lg btn-primary text-white w-100 fs-6">
+                <Link to="/homepage">
+                  Login
+                </Link>
+                
+                  
                 </button>
               </div>
   

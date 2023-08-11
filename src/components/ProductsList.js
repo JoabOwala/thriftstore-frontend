@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -27,9 +28,13 @@ function ProductsList() {
       if (response.ok) {
         // Remove the deleted product from the products list
         setProducts(products.filter(product => product.id !== productId));
+        Swal.fire('Deleted!', 'Product has been deleted.', 'success');
+      } else {
+        Swal.fire('Error!', 'Failed to delete the product.', 'error');
       }
     } catch (error) {
       console.error('Error deleting product:', error);
+      Swal.fire('Error!', 'An error occurred while deleting the product.', 'error');
     }
   };
 
@@ -55,6 +60,8 @@ function ProductsList() {
                 <Link to={`/edit/${product.id}`} className="btn btn-primary mr-2">
                   Edit
                 </Link>
+                <br />
+                <br />
                 <button
                   className="btn btn-primary"
                   type="button"
@@ -72,5 +79,6 @@ function ProductsList() {
 }
 
 export default ProductsList;
+
 
 
